@@ -64,11 +64,6 @@ class Users implements UserInterface
      */
     private $phone;
 
-    /**
-     * @ORM\Column(type="string", length=30, nullable=true)
-     */
-    private $confirmationToken;
-
     public function __construct()
     {
         $this->created = new \DateTime();
@@ -166,7 +161,7 @@ class Users implements UserInterface
 
     public function __toString()
     {
-        return self::class;
+        return self::getEmail();
     }
 
     public function getGender(): ?string
@@ -225,18 +220,6 @@ class Users implements UserInterface
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
-
-        return $this;
-    }
-
-    public function getConfirmationToken(): ?string
-    {
-        return $this->confirmationToken;
-    }
-
-    public function setConfirmationToken(?string $confirmationToken): self
-    {
-        $this->confirmationToken = $confirmationToken;
 
         return $this;
     }
