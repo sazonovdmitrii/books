@@ -1,6 +1,44 @@
 easy_admin:
     site_name: 'Books'
     entities:
-        - App\Entity\Users
+        Users:
+            class: App\Entity\Users
+            label: 'Пользователи'
+            list:
+                title: 'Пользователи'
+                fields: ['id', 'email', 'roles']
+        Page:
+            class: App\Entity\Page
+            label: 'Страницы'
+            list:
+                title: 'Страницы'
+                fields: ['id', 'title', 'name', 'visible']
+            form:
+                fields:
+                    - { type: 'tab' , label: 'Основные' }
+                    - {property: visible, label: 'Видимость'}
+                    - { type: 'tab' , label: 'Мультиязычный контент' }
+                    - { property: 'translations', label: false, type: A2lix\TranslationFormBundle\Form\Type\TranslationsType, type_options: { default_locale: '%locale%', fields: { name: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType' }, title: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType' }, content: {field_type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' }}}}
+                    - { type: 'tab' , label: 'Мета' }
+                    - meta_keywords
+                    - meta_description
+                    - { type: 'tab', label: 'Адреса' }
+                    - { property: 'pageUrls', type_options: { block_name: 'page_urls' }}
+        Block:
+            class: App\Entity\Block
+            label: 'Блоки'
+            list:
+                title: 'Блоки'
+                fields: ['id', 'title', 'name', 'visible']
+            form:
+                fields:
+                    - { type: 'tab' , label: 'Основные' }
+                    - {property: visible, label: 'Видимость'}
+                    - {property: name, label: 'Наименование'}
+                    - { type: 'tab' , label: 'Мультиязычный контент' }
+                    - { property: 'translations', label: false, type: A2lix\TranslationFormBundle\Form\Type\TranslationsType, type_options: {default_locale: '%locale%', fields: { title: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType' }, content: {field_type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' }}}}
     design:
         brand_color: 'black'
+        form_theme:
+            - 'admin/form/bootstrap_4.html.twig'
+            - 'admin/form/page_urls.html.twig'
