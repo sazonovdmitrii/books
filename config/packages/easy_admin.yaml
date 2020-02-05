@@ -42,3 +42,4 @@ easy_admin:
         form_theme:
             - 'admin/form/bootstrap_4.html.twig'
             - 'admin/form/page_urls.html.twig'
+            - 'Form/ckeditor_widget.html.twig'
