@@ -5,15 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Contract\Entity\TranslatableInterface;
-use Knp\DoctrineBehaviors\Model\Translatable\TranslatableTrait;
-
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PageRepository")
  */
-class Page implements TranslatableInterface
+class Page
 {
-    use TranslatableTrait;
+    use ORMBehaviors\Translatable\Translatable;
 
     /**
      * @ORM\Id()

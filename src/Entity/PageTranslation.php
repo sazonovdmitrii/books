@@ -3,21 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Knp\DoctrineBehaviors\Contract\Entity\TranslationInterface;
-use Knp\DoctrineBehaviors\Model\Translatable\TranslationTrait;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PageRepository")
  */
-class PageTranslation implements TranslationInterface
+class PageTranslation
 {
-    use TranslationTrait;
-
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    use ORMBehaviors\Translatable\Translation;
 
     /**
      * @ORM\Column(type="text", nullable=true)

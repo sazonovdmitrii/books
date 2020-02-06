@@ -38,8 +38,9 @@ easy_admin:
                     - { type: 'tab' , label: 'Мультиязычный контент' }
                     - { property: 'translations', label: false, type: A2lix\TranslationFormBundle\Form\Type\TranslationsType, type_options: {default_locale: '%locale%', fields: { title: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType' }, content: {field_type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' }}}}
     design:
-        brand_color: 'black'
+        brand_color: 'lightblue'
         form_theme:
-            - 'admin/form/bootstrap_4.html.twig'
             - 'admin/form/page_urls.html.twig'
-            - 'Form/ckeditor_widget.html.twig'
+        assets:
+            css:
+                - '/bundles/easyadmin/custom.css'
