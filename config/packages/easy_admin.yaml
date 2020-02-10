@@ -23,7 +23,7 @@ easy_admin:
                     - { property: meta_keywords, label: 'Мета Ключевые слова'}
                     - { property: meta_description, label: 'Мета Описание'}
                     - { type: 'tab', label: 'Адреса' }
-                    - { property: 'pageUrls', type_options: { block_name: 'page_urls' }}
+                    - { property: 'pageUrls', type_options: { block_name: 'page_urls', by_reference: false }}
         Block:
             class: App\Entity\Block
             label: 'Блоки'
