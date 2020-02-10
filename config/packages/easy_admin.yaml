@@ -16,12 +16,12 @@ easy_admin:
             form:
                 fields:
                     - { type: 'tab' , label: 'Основные' }
-                    - {property: visible, label: 'Видимость'}
+                    - { property: visible, label: 'Видимость'}
                     - { type: 'tab' , label: 'Мультиязычный контент' }
-                    - { property: 'translations', label: false, type: A2lix\TranslationFormBundle\Form\Type\TranslationsType, type_options: { default_locale: '%locale%', fields: { name: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType' }, title: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType' }, content: {field_type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' }}}}
+                    - { property: 'translations', label: false, type: A2lix\TranslationFormBundle\Form\Type\TranslationsType, type_options: { default_locale: '%locale%', fields: { name: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType', label: 'Наименование' }, title: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType', label: 'Заголовок' }, content: {field_type: 'FOS\CKEditorBundle\Form\Type\CKEditorType', label: 'Контент'}}}}
                     - { type: 'tab' , label: 'Мета' }
-                    - meta_keywords
-                    - meta_description
+                    - { property: meta_keywords, label: 'Мета Ключевые слова'}
+                    - { property: meta_description, label: 'Мета Описание'}
                     - { type: 'tab', label: 'Адреса' }
                     - { property: 'pageUrls', type_options: { block_name: 'page_urls' }}
         Block:
@@ -38,9 +38,12 @@ easy_admin:
                     - { type: 'tab' , label: 'Мультиязычный контент' }
                     - { property: 'translations', label: false, type: A2lix\TranslationFormBundle\Form\Type\TranslationsType, type_options: {default_locale: '%locale%', fields: { title: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType' }, content: {field_type: 'FOS\CKEditorBundle\Form\Type\CKEditorType' }}}}
     design:
-        brand_color: 'lightblue'
+        brand_color: 'darkgrey'
         form_theme:
+            - '@EasyAdmin/form/bootstrap_3_layout.html.twig'
             - 'admin/form/page_urls.html.twig'
         assets:
             css:
-                - '/bundles/easyadmin/custom.css'
+                - '/bundles/easyadmin/stylesheet/custom.css'
+            js:
+                - 'https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js'
