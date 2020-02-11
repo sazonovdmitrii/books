@@ -3,15 +3,11 @@
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="stylesheet" href="{{ asset('bundles/easyadmin/stylesheet/easyadmin-all.min.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
-    <body class="easyadmin">
-        <div class="wrapper">
-            <section id="main" class="content">
-                {% block body %}{% endblock %}
-            </section>
-        </div>
+    <body data-spy="scroll" data-target=".navMenuCollapse">
+        {% block header %}{% endblock %}
+        {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>
