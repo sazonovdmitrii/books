@@ -25,19 +25,33 @@ class ContactsController extends AbstractController
         $form = $this->createFormBuilder($feedback)
             ->add('firstname', TextType::class, [
                 'label' => 'Имя',
-                'class' => 'form-control'
+                'attr' => [
+                    'class' => 'form form-control'
+                ]
             ])
             ->add('lastname', TextType::class, [
-                'label' => 'Фамилия'
+                'label' => 'Фамилия',
+                'attr' => [
+                    'class' => 'form form-control'
+                ]
             ])
             ->add('email', TextType::class, [
-                'label' => 'Email'
+                'label' => 'Email',
+                'attr' => [
+                    'class' => 'form form-control'
+                ]
             ])
             ->add('phone', TextType::class, [
-                'label' => 'Телефон'
+                'label' => 'Телефон',
+                'attr' => [
+                    'class' => 'form form-control'
+                ]
             ])
             ->add('message', TextareaType::class, [
-                'label' => 'Сообщение'
+                'label' => 'Сообщение',
+                'attr' => [
+                    'class' => 'form form-control'
+                ]
             ])
             ->add('save', SubmitType::class, ['label' => 'Отправить'])
             ->getForm();

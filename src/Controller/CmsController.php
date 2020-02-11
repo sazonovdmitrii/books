@@ -2,17 +2,23 @@
 
 namespace App\Controller;
 
-use App\Repository\BlockRepository;
-use App\Repository\PageRepository;
+use App\Repository\PageUrlRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Routing\Annotation\Route;
+use App\Service\ContentService;
 
 class CmsController extends AbstractController
 {
-    public function page()
-    {
-        return $this->render('page.html.twig', [
-            'controller_name' => 'PageController',
-        ]);
+    public function page(
+        string $slug,
+        PageUrlRepository $pageUrlRepository,
+        ContentService $contentService
+    ) {
+        $pageUrl = $pageUrlRepository->findByUrl($slug . '/');
+
+        if($pageUrl) {
+            return $this->render('page.html.twig', [
+                'page' => $contentService->wrap($pageUrl->getEntity())
+            ]);
+        }
     }
 }

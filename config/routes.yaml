@@ -3,8 +3,8 @@ easy_admin_bundle:
   prefix: /admin
   type: annotation
 
-#urls:
-#  path:     /{slug}
-#  controller: App\Controller\CmsController::page
-#  requirements:
-#    slug:  ".*"
+urls:
+  path:     /{_locale}/{slug}
+  controller: App\Controller\CmsController::page
+  requirements:
+    _locale: ru|en|de
