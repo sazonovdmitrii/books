@@ -5,9 +5,23 @@ namespace App\Controller;
 use App\Repository\PageUrlRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\ContentService;
+use Symfony\Component\HttpFoundation\Response;
 
+
+/**
+ * Class CmsController
+ *
+ * @package App\Controller
+ */
 class CmsController extends AbstractController
 {
+    /**
+     * @param string $slug
+     * @param PageUrlRepository $pageUrlRepository
+     * @param ContentService $contentService
+     * @return \Symfony\Component\HttpFoundation\Response
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function page(
         string $slug,
         PageUrlRepository $pageUrlRepository,
