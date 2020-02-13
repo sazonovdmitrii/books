@@ -1,0 +1,3 @@
+twig:
+    globals:
+        helper: '@App\Service\Twig\Helper'

@@ -1,0 +1,10 @@
+{% block _project_image_widget %}
+    {% set entity = form.parent.vars.data %}
+
+    {% include 'admin/form/elements/image_once.html.twig' with {
+        'name': (name),
+        'type': 'Project',
+        'src': helper.value(entity, name)
+    } %}
+{% endblock %}
+

@@ -39,17 +39,40 @@ easy_admin:
             form:
                 fields:
                     - { type: 'tab' , label: 'Основные' }
-                    - {property: visible, label: 'Видимость'}
-                    - {property: name, label: 'Наименование'}
+                    - { property: visible, label: 'Видимость' }
+                    - { property: name, label: 'Наименование' }
                     - { type: 'tab' , label: 'Мультиязычный контент' }
                     - { property: 'translations', label: false, type: A2lix\TranslationFormBundle\Form\Type\TranslationsType, type_options: {default_locale: '%locale%', fields: { title: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType', label: 'Заголовок' }, content: {field_type: 'FOS\CKEditorBundle\Form\Type\CKEditorType', label: 'Контент' }}}}
+        Project:
+            class: App\Entity\Project
+            label: 'Проекты'
+            list:
+                title: 'Проекты'
+                fields:
+                    - { property: id, label: 'ID' }
+                    - { property: title, label: 'Заголовок' }
+                    - { property: 'main_image', template: 'admin/renderers/image.html.twig' }
+                    - { property: 'middle_image', template: 'admin/renderers/image.html.twig' }
+                    - { property: link, label: 'Книга' }
+            form:
+                fields:
+                    - { type: 'tab' , label: 'Основные' }
+                    - { property: 'translations', label: false, type: A2lix\TranslationFormBundle\Form\Type\TranslationsType, type_options: {default_locale: '%locale%', fields: { title: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType', label: 'Заголовок' }, description: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType', label: 'Описание' }, short_description: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType', label: 'Краткое описание' }}}}
+                    - { type: 'tab' , label: 'Изображения' }
+                    - { property: main_image, label: 'Основное изображение', type_options: { block_name: 'image' }}
+                    - { property: middle_image, label: 'Среднее изображение', type_options: { block_name: 'image' }}
+                    - { type: 'tab' , label: 'Книга' }
+                    - { property: link, label: 'Ссылка' }
     design:
         brand_color: 'darkgrey'
         form_theme:
             - '@EasyAdmin/form/bootstrap_3_layout.html.twig'
             - 'admin/form/page_urls.html.twig'
+            - 'admin/form/image.html.twig'
         assets:
             css:
                 - '/bundles/easyadmin/stylesheet/custom.css'
             js:
                 - 'https://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js'
+                - '/bundles/easyadmin/javascript/jq-ui.js'
+                - '/bundles/easyadmin/javascript/fileupload.js'

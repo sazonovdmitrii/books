@@ -5,6 +5,8 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: ru
+    app.path.Project: '%kernel.project_dir%/public/uploads/project'
+    app.url.Project: '/uploads/project'
 
 services:
     # default configuration for services in *this* file
@@ -32,7 +34,3 @@ services:
     App\Service\ContentService:
         arguments:
             $blockRepository: '@App\Repository\BlockRepository'
-
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
