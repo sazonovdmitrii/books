@@ -34,6 +34,11 @@ class Project
      */
     private $link;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $url;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -87,5 +92,17 @@ class Project
         $method = 'get'. ucfirst($name);
         $arguments = [];
         return $this->proxyCurrentLocaleTranslation($method, $arguments);
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): self
+    {
+        $this->url = $url;
+
+        return $this;
     }
 }
