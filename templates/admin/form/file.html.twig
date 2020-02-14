@@ -1,0 +1,8 @@
+{% block _project_file_widget %}
+    {% set entity = form.parent.vars.data %}
+    {% include 'admin/form/elements/file_once.html.twig' with {
+        'name': (name),
+        'type': 'Project',
+        'src': helper.value(entity, name)
+    } %}
+{% endblock %}

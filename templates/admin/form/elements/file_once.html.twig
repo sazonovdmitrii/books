@@ -1,0 +1,74 @@
+{% set entity = form.parent.vars.data %}
+<input type="hidden" id="{{ type|lower }}_{{ name }}" name="{{ type|lower }}[{{ name }}]" value="{{ src }}" class="form-control"/>
+<input type="hidden" id="type" name="type" value="{{ type }}" class="form-control"/>
+
+<div class="row">
+    <div class="col-sm-2">
+        <span class="btn btn-primary btn-file">
+            Выбрать файл <input id="file_upload_{{ name }}" type="file" name="file" data-url="/admin/files/upload_once">
+        </span>
+    </div>
+</div>
+<div id="upload_process"></div>
+<hr>
+<div id="file_{{ name }}">
+    {% if src %}
+        <div class="file_item col-sm-2">
+            <a href="{{ src }}">Книга</a>
+            <div>
+                <button onclick="delete_file(this)" class="btn btn-default" type="button">
+                        <span class="glyph icon glyphicon-trash">Удалить</span>
+                </button>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('#file_upload_{{ name }}').fileupload({
+            dataType: 'json',
+            done: function (e, data) {
+                var src = data.result.file;
+                $('#{{ type|lower }}_{{ name }}').val(src);
+                $('#upload_process').html('');
+                $('#file_{{ name }}').html('');
+                $('#file_tmpl').tmpl(data.result).appendTo('#file_{{ name }}');
+            },
+            progressall: function (e, data) {
+                var $div = $('#div_process_' + data.upload_number);
+                var progress = parseInt(data.loaded / data.total * 100, 10);
+                $div.find('.progress-bar').css('width', progress + '%');
+            }
+        });
+    });
+
+    function delete_file(btn) {
+        if (confirm('Удалить файл?')) {
+            var img = $(btn).parents(".file_item");
+            $.get("/admin/files/delete?" + $.param({
+                'eid': img.attr('eid'),
+                'type': '{{ type }}'
+            }), {}, function (data) {
+                if (data.error) {
+                    alert(data.error);
+                } else {
+                    img.remove();
+                }
+            }, 'json')
+                .error(function () {
+                    alert("error connection");
+                })
+        }
+    }
+</script>
+<script id="file_tmpl" type="text/x-jquery-tmpl">
+    <div class="file_item col-sm-2">
+        <a href="${file}">Книга</a>
+        <div>
+            <button onclick="delete_file(this)" class="btn btn-default" type="button">
+                <span class="glyphicon glyphicon-trash">Удалить</span>
+            </button>
+        </div>
+    </div>
+</script>
