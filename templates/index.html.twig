@@ -22,23 +22,38 @@
 {% endblock %}
 
 {% block header %}
-	<!--PRELOADER-->
 	<div id="preloader">
 		<div class="loading-data"></div>
 	</div>
 	<nav class="navbar bg-color3">
 		<div class="container-fluid">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+						{{ language.current()|upper }} <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu" role="menu">
+						{% for language in languages %}
+							<li>
+								<a href="{{ path('locale', {locale: language}) }}" class="language" rel="{{ language }}">
+									{{ language|upper }}
+								</a>
+							</li>
+						{% endfor %}
+					</ul>
+				</li>
+			</ul>
 			<a class="navbar-brand goto" href="#">
 				<!-- <img src="./images/logo.png" height="25" alt="Your logo"> -->
 			</a>
 			<button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse" data-target=".navMenuCollapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 			<div class="collapse navbar-collapse navMenuCollapse">
-				<div class="login-panel"><a class="btn btn-primary" href="#">Электронный магазин <i class="icon right-icon icon-download"></i></a></div>
+				<div class="login-panel"><a class="btn btn-primary" href="#">{{ 'Электронный магазин'|trans }} <i class="icon right-icon icon-download"></i></a></div>
 				<ul class="nav">
-					<li><a href="/en/about-us">О нас</a></li>
-					<li><a href="/en/goals-and-tasks/">Цель и задачи проектного офиса</a></li>
-					<li><a href="/contacts">Контакты</a></li>
-					<li><a href="/en/projects">Проекты</a></li>
+					<li><a href="/about-us">{{ 'О нас'|trans }}</a></li>
+					<li><a href="/goals-and-tasks/">{{ 'Цель и задачи проектного офиса'|trans }}</a></li>
+					<li><a href="/contacts">{{ 'Контакты'|trans }}</a></li>
+					<li><a href="/projects">{{ 'Проекты'|trans }}</a></li>
 				</ul>
 			</div>
 		</div>

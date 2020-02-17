@@ -5,8 +5,6 @@ namespace App\Controller;
 use App\Repository\PageUrlRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\ContentService;
-use Symfony\Component\HttpFoundation\Response;
-
 
 /**
  * Class CmsController

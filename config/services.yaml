@@ -28,9 +28,12 @@ services:
         tags: ['controller.service_arguments']
 
     App\Event\LocaleSubscriber:
-        arguments:
-            - '%kernel.default_locale%'
+        arguments: ['%kernel.default_locale%']
 
     App\Service\ContentService:
         arguments:
             $blockRepository: '@App\Repository\BlockRepository'
+
+    App\Service\Twig\Language:
+        arguments:
+            $request: '@request_stack'

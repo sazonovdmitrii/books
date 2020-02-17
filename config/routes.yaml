@@ -4,7 +4,5 @@ easy_admin_bundle:
   type: annotation
 
 urls:
-  path:     /{_locale}/{slug}
+  path:     /{slug}
   controller: App\Controller\CmsController::page
-  requirements:
-    _locale: ru|en|de
