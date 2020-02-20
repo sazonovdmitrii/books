@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
@@ -38,6 +40,16 @@ class Project
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $url;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BookHash", mappedBy="project")
+     */
+    private $bookHashes;
+
+    public function __construct()
+    {
+        $this->bookHashes = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -102,6 +114,37 @@ class Project
     public function setUrl(?string $url): self
     {
         $this->url = $url;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BookHash[]
+     */
+    public function getBookHashes(): Collection
+    {
+        return $this->bookHashes;
+    }
+
+    public function addBookHash(BookHash $bookHash): self
+    {
+        if (!$this->bookHashes->contains($bookHash)) {
+            $this->bookHashes[] = $bookHash;
+            $bookHash->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBookHash(BookHash $bookHash): self
+    {
+        if ($this->bookHashes->contains($bookHash)) {
+            $this->bookHashes->removeElement($bookHash);
+            // set the owning side to null (unless already changed)
+            if ($bookHash->getProject() === $this) {
+                $bookHash->setProject(null);
+            }
+        }
 
         return $this;
     }

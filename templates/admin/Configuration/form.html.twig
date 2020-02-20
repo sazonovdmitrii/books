@@ -1,0 +1,37 @@
+{% set _entity_config = easyadmin_entity(app.request.query.get('entity')) %}
+{% extends _entity_config.templates.layout %}
+
+{% block content_title %}
+    {{ _entity_config.name }}
+{% endblock %}
+
+{% block main %}
+    <form action="/admin/" method="GET">
+        <input type="hidden" name="entity" value="Configuration"/>
+        <input type="hidden" name="action" value="save"/>
+        <div id="accordion">
+            <div class="card">
+                <div class="card-header" id="headingOne">
+                    <h5 class="mb-0">
+                        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne"
+                                aria-expanded="true"
+                                aria-controls="collapseOne">
+                            Ценообразование
+                        </button>
+                    </h5>
+                </div>
+
+                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label for="profit">Время жизни ссылки на книгу (в минутах)</label>
+                            <input type="text" class="form-control" name="book_lifetime" id="book_lifetime"
+                                   value="{{ list.book_lifetime is defined ? list.book_lifetime : '' }}"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+    </form>
+{% endblock main %}

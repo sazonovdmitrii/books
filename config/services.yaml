@@ -7,6 +7,7 @@ parameters:
     locale: ru
     app.path.Project: '%kernel.project_dir%/public/uploads/project'
     app.url.Project: '/uploads/project'
+    email_from: '%env(MAILER_FROM)%'
 
 services:
     # default configuration for services in *this* file
@@ -34,6 +35,19 @@ services:
         arguments:
             $blockRepository: '@App\Repository\BlockRepository'
 
+    App\Service\BookService:
+        arguments:
+            $bookHashRepository: '@App\Repository\BookHashRepository'
+            $entityManager: '@doctrine.orm.default_entity_manager'
+
+    App\Mailer\Mailer:
+        arguments:
+            $mailFrom: '%email_from%'
+
     App\Service\Twig\Language:
         arguments:
             $request: '@request_stack'
+
+    App\Service\ConfigService:
+        arguments:
+            $configurationRepository: '@App\Repository\ConfigurationRepository'
