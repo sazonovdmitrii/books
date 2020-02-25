@@ -28,6 +28,6 @@ class IndexController extends AbstractController
     public function locale($locale, Request $request)
     {
         $request->getSession()->set('_locale', $locale);
-        return $this->redirectToRoute('root');
+        return $this->redirect($request->headers->get('referer'));
     }
 }
