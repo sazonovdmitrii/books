@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\BlockRepository;
+use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,14 +18,18 @@ class IndexController extends AbstractController
     /**
      * @Route("/", name="root")
      * @param BlockRepository $blockRepository
+     * @param ProjectRepository $projectRepository
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function index(
-        BlockRepository $blockRepository
+        BlockRepository $blockRepository,
+        ProjectRepository $projectRepository
     ) {
-        $top_block = $blockRepository->findById(['id' => 3]);
+        $top_block = $blockRepository->findBy(['id' => 3]);
+        $projects = $projectRepository->findAll();
         return $this->render('index.html.twig', [
             'top_block' => $top_block[0],
+            'projects' => $projects,
             'controller_name' => 'RootController',
         ]);
     }
