@@ -91,14 +91,14 @@
 
 				<div class="row">
 					{% for project in projects %}
-					<div class="col-sm-4">
+					<div class="col-sm-6">
 						<div class="post">
 							<div class="post-media">
-								<a href="{{ project.link }}"><img src="{{ project.getMainImage() }}" alt="{{ project.title }}" class="img-responsive"></a>
+								<a href="{{ path( 'project', {slug: project.url}) }}"><img src="{{ project.getMainImage() }}" alt="{{ project.title }}" class="img-responsive"></a>
 							</div>
 							<div class="post-content">
-								<h4 class="title"><a href="{{ project.link }}">{{ project.title }}</a></h4>
-								<div class="post-desc">{{ project.getShortDescription()|raw }}<a href="{{ project.link }}" class="read-more" title="read more">•••</a></div>
+								<h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></h4>
+								<div class="post-desc">{{ project.getShortDescription()|raw }}<a href="{{ path( 'project', {slug: project.url}) }}" class="read-more" title="read more">•••</a></div>
 							</div>
 						</div>
 					</div>

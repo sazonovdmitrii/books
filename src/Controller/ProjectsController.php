@@ -21,7 +21,7 @@ class ProjectsController extends AbstractController
         string $slug,
         ProjectRepository $projectRepository
     ) {
-        $project = $projectRepository->findOneBy(['url' => '/' . $slug]);
+        $project = $projectRepository->findOneBy(['url' =>  $slug]);
 
         if($project) {
             return $this->render('project.html.twig', [
