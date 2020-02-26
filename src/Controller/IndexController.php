@@ -25,7 +25,7 @@ class IndexController extends AbstractController
         BlockRepository $blockRepository,
         ProjectRepository $projectRepository
     ) {
-        $top_block = $blockRepository->findBy(['id' => 3]);
+        $top_block = $blockRepository->findBy(['name' => 'slider_block']);
         $projects = $projectRepository->findAll();
         return $this->render('index.html.twig', [
             'top_block' => $top_block[0],
