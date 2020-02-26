@@ -66,12 +66,7 @@
 		<header id="intro-half-right" class="intro-block bg-color3 fixed-bg double-padding" style="background-image:url(/images/bg15.jpg); background-attachment: local;">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-4 col-ld-offset-4">
-						<div class="slogan">
-							<h1>Проектный офис<br><strong>Александра Данилюка и Аллы Факторович</strong></h1>
-							<p>МУЛЬТИПРОЕКТ "ЦИФРОВОЕ ОБРАЗОВАНИЕ"</p>
-						</div>
-					</div>
+					{{ top_block.content|raw  }}
 				</div>
 			</div>
 		</header><!-- CONTENT HALF LEFT BLOCK -->
@@ -92,7 +87,7 @@
 {#		</section><!-- RECENT POSTS 3 COL BLOCK -->#}
 		<section id="blog-3col">
 			<div class="container">
-				<h2 class="title text-center">Проекты</h2>
+				<h2 class="title text-center">{{ 'Проекты'|trans }}</h2>
 
 				<div class="row">
 					<div class="col-sm-4">
