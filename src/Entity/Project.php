@@ -46,6 +46,11 @@ class Project
      */
     private $bookHashes;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $crowdfunding;
+
     public function __construct()
     {
         $this->bookHashes = new ArrayCollection();
@@ -145,6 +150,18 @@ class Project
                 $bookHash->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCrowdfunding(): ?bool
+    {
+        return $this->crowdfunding;
+    }
+
+    public function setCrowdfunding(?bool $crowdfunding): self
+    {
+        $this->crowdfunding = $crowdfunding;
 
         return $this;
     }

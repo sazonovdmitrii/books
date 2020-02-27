@@ -23,6 +23,11 @@ class ProjectTranslation
     private $description;
 
     /**
+     * @ORM\Column(type="float", nullable=true)
+     */
+    private $price;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $short_description;
@@ -59,6 +64,18 @@ class ProjectTranslation
     public function setShortDescription(?string $short_description): self
     {
         $this->short_description = $short_description;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?float $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

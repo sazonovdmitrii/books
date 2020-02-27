@@ -7,6 +7,8 @@ parameters:
     locale: ru
     app.path.Project: '%kernel.project_dir%/public/uploads/project'
     app.url.Project: '/uploads/project'
+    app.path.ImageManager: '%kernel.project_dir%/public/uploads/imagemanager'
+    app.url.ImageManager: '/uploads/imagemanager'
     email_from: '%env(MAILER_FROM)%'
 
 services:

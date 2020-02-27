@@ -58,6 +58,8 @@ easy_admin:
             form:
                 fields:
                     - { type: 'tab' , label: 'Основные' }
+                    - { property: crowdfunding, label: 'Краудфандинг' }
+                    - { type: 'tab' , label: 'Мультиязычный контент' }
                     - { property: translations, label: false, type: A2lix\TranslationFormBundle\Form\Type\TranslationsType, type_options: {default_locale: '%locale%', fields: { title: {field_type: 'Symfony\Component\Form\Extension\Core\Type\TextType', label: 'Заголовок' }, description: {field_type: 'FOS\CKEditorBundle\Form\Type\CKEditorType', label: 'Описание' }, short_description: {field_type: 'FOS\CKEditorBundle\Form\Type\CKEditorType', label: 'Краткое описание' }}}}
                     - { type: 'tab' , label: 'Изображения' }
                     - { property: main_image, label: 'Основное изображение', type_options: { block_name: 'image' }}
@@ -70,6 +72,18 @@ easy_admin:
             label: 'Конфигурация сайта'
             class: App\Entity\Configuration
             controller: App\Controller\Admin\ConfigurationController
+        ImageManager:
+            class: App\Entity\ImageManager
+            label: 'Менеджер картинок'
+            list:
+                title: 'Менеджер картинок'
+                fields:
+                    - id
+                    - { property: 'image', template: 'admin/renderers/image.html.twig' }
+                    - created
+            form:
+                fields:
+                    - { property: path, label: 'Изображение', type_options: { block_name: 'image' }}
     design:
         brand_color: 'darkgrey'
         form_theme:
