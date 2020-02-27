@@ -58,7 +58,7 @@ class ContactsController extends AbstractController
                     'class' => 'form form-control'
                 ]
             ])
-            ->add('save', SubmitType::class, ['label' => 'Отправить'])
+            ->add('save', SubmitType::class, ['label' => 'Отправить', 'attr' => ['class' => 'btn btn-lg btn-block btn-primary']])
             ->getForm();
 
         $form->handleRequest($request);

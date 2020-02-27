@@ -1,10 +1,29 @@
 {% extends "index.html.twig" %}
 
 {% block body %}
-    {% for message in app.flashes('success') %}
-        <div class="alert alert-success">
-            {{ message }}
+    <section id="text-1col">
+        <div class="container">
+            <div class="row">
+                <h2 class="title text-center">{{ 'Контакты' |trans}}</h2>
+                <p>По вопросам открытия и работы проектных офисов Вы можете обращаться по адресу:
+                    <a href="mailto:daaf_prof@com">daaf_prof@com</a>
+                    Если возникли проблемы по приобретению цифровых книг, участию в краудфандинговых проектах или иные вопросы, пишите нам по
+                    адресу: <a href="mailto:daaf_info@com">daaf_info@com</a></p>
+
+            </div>
+            <div class="row">
+                <p>
+                    Или задайте вопрос воспользовавшись формой ниже:
+                </p>
+                {% for message in app.flashes('success') %}
+                    <div class="alert alert-success">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+                {{ form(form) }}
+            </div>
         </div>
-    {% endfor %}
-    {{ form(form) }}
+    </section>
+
+
 {% endblock %}
