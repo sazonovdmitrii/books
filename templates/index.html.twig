@@ -50,6 +50,7 @@
 			<div class="collapse navbar-collapse navMenuCollapse">
 				<div class="login-panel"><a class="btn btn-primary" href="/projects">{{ 'Проекты'|trans }} <i class="icon right-icon icon-download"></i></a></div>
 				<ul class="nav">
+					<li><a href="/">{{ 'Главная'|trans }}</a></li>
 					<li><a href="/about-us">{{ 'О нас'|trans }}</a></li>
 					<li><a href="/goals-and-tasks/">{{ 'Объединим усилия для нового образования'|trans }}</a></li>
 					<li><a href="/contacts">{{ 'Контакты'|trans }}</a></li>
@@ -93,9 +94,11 @@
 					{% for project in projects %}
 					<div class="col-sm-6">
 						<div class="post">
+							{% if  project.getMainImage() %}
 							<div class="post-media">
 								<a href="{{ path( 'project', {slug: project.url}) }}"><img src="{{ project.getMainImage() }}" alt="{{ project.title }}" class="img-responsive"></a>
 							</div>
+							{% endif %}
 							<div class="post-content">
 								<h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></h4>
 								<div class="post-desc">{{ project.getShortDescription()|raw }}<a href="{{ path( 'project', {slug: project.url}) }}" class="read-more" title="read more">•••</a></div>
@@ -107,7 +110,7 @@
 			</div>
 		</section>
 		</div>
-
+{% endblock %}
 
 {% block footer %}
 	<footer id="footer-list-2" class="bg-color3">
@@ -116,7 +119,7 @@
 				<div class="col-md-8">
 					<div class="row">
 						<div class="col-md-3">
-							<h4>О нас</h4>
+							<h4><a href="/about-us">{{ 'О нас'|trans }}</a></h4>
 							<!-- <ul class="links-list">
                                 <li><a href="#" target="_blank">Promotion</a></li>
                                 <li><a href="#" target="_blank">Planning</a></li>
@@ -126,7 +129,7 @@
                             </ul> -->
 						</div>
 						<div class="col-md-3">
-							<h4>Цель и задачи проектного офиса</h4>
+							<h4><a href="/goals-and-tasks/">{{ 'Объединим усилия для нового образования'|trans }}</a></h4>
 							<!-- <ul class="links-list">
                                 <li><a href="#" target="_blank">Header</a></li>
                                 <li><a href="#" target="_blank">Description</a></li>
@@ -136,7 +139,7 @@
                             </ul> -->
 						</div>
 						<div class="col-md-3">
-							<h4>Контакты</h4>
+							<h4><a href="/contacts">{{ 'Контакты'|trans }}</a></h4>
 							<!-- <ul class="links-list">
                                 <li><a href="#" target="_blank">Register</a></li>
                                 <li><a href="#" target="_blank">Login</a></li>
@@ -146,14 +149,14 @@
                             </ul> -->
 						</div>
 						<div class="col-md-3">
-							<h4>Проекты</h4>
-							<ul class="links-list">
+							<h4><a href="/projects">{{ 'Проекты'|trans }} </h4>
+{#							<ul class="links-list">#}
 {#								<li><a href="#" target="_blank">Создание цифровой школы</a></li>#}
 {#								<li><a href="#" target="_blank">Разработка системы общих компетенций, технологий их формирования и оценки</a></li>#}
 {#								<li><a href="#" target="_blank">Цифровое поликультурное образование</a></li>#}
-								<!-- <li><a href="#" target="_blank">LinkedIn</a></li>
-                                <li><a href="#" target="_blank">Dribbble</a></li> -->
-							</ul>
+{#								<!-- <li><a href="#" target="_blank">LinkedIn</a></li>#}
+{#                                <li><a href="#" target="_blank">Dribbble</a></li> -->#}
+{#							</ul>#}
 						</div>
 					</div>
 				</div>
@@ -191,7 +194,7 @@
 			</div>
 		</div>
 	</footer>
-{% endblock %}
+
 {% endblock %}
 {% block javascripts %}
 	<script src="/scripts/jquery-1.11.2.min.js"></script>
