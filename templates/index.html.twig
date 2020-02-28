@@ -48,12 +48,13 @@
 			</a>
 			<button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse" data-target=".navMenuCollapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 			<div class="collapse navbar-collapse navMenuCollapse">
-				<div class="login-panel"><a class="btn btn-primary" href="#">{{ 'Электронный магазин'|trans }} <i class="icon right-icon icon-download"></i></a></div>
+				<div class="login-panel"><a class="btn btn-primary" href="/projects">{{ 'Проекты'|trans }} <i class="icon right-icon icon-download"></i></a></div>
 				<ul class="nav">
+					<li><a href="/">{{ 'Главная'|trans }}</a></li>
 					<li><a href="/about-us">{{ 'О нас'|trans }}</a></li>
-					<li><a href="/goals-and-tasks/">{{ 'Цель и задачи проектного офиса'|trans }}</a></li>
+					<li><a href="/goals-and-tasks/">{{ 'Объединим усилия для нового образования'|trans }}</a></li>
 					<li><a href="/contacts">{{ 'Контакты'|trans }}</a></li>
-					<li><a href="/projects">{{ 'Проекты'|trans }}</a></li>
+{#					<li><a href="/projects">{{ 'Проекты'|trans }}</a></li>#}
 				</ul>
 			</div>
 		</div>
@@ -63,86 +64,48 @@
 {% block body %}
 	<div id="wrap">
 		<!-- INTRO HALF RIGHT BLOCK -->
-		<header id="intro-half-right" class="intro-block bg-color3 fixed-bg double-padding" style="background-image:url(/images/bg15.jpg)">
+		<header id="intro-half-right" class="intro-block bg-color3 fixed-bg double-padding" style="background-image:url(/images/bg15.jpg); background-attachment: local;">
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6 col-md-offset-6">
-						<div class="slogan">
-							<h1>Проектный офис<br><strong>Александра Данилюка и Аллы Факторович</strong></h1>
-							<p>МУЛЬТИПРОЕКТ "ЦИФРОВОЕ ОБРАЗОВАНИЕ"</p>
-						</div>
-						<!-- <a class="btn btn-lg btn-primary" href="#"> <i class="icon icon-basket-loaded"></i> Buy Now!</a>
-                        <a class="btn btn-lg btn-default" href="#"><i class="icon icon-arrow-down"></i> Learn more</a> -->
-					</div>
+					{{ top_block.content|raw  }}
 				</div>
 			</div>
 		</header><!-- CONTENT HALF LEFT BLOCK -->
 		<!-- NAVIGATION LOGIN FULL -->
-		<section id="content-half-left">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4 col-md-5">
-						<div class="editContent">
-							<h2>Цель и задачи проектного офиса</h2>
-							<!-- <h4 class="sub-title">Modern solution</h4> -->
-							<p>In our work we try to use only the most modern, convenient and interesting solutions. We want the template you downloaded look unique and new for such a long time as it is possible. </p>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="container-half container-half-right cover-bg" style="background-image:url(/images/bg4.jpg)"></div>
-		</section><!-- RECENT POSTS 3 COL BLOCK -->
+{#		<section id="content-half-left">#}
+{#			<div class="container">#}
+{#				<div class="row">#}
+{#					<div class="col-lg-4 col-md-5">#}
+{#						<div class="editContent">#}
+{#							<h2>Цель и задачи проектного офиса</h2>#}
+{#							<!-- <h4 class="sub-title">Modern solution</h4> -->#}
+{#							<p>In our work we try to use only the most modern, convenient and interesting solutions. We want the template you downloaded look unique and new for such a long time as it is possible. </p>#}
+{#						</div>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+{#			<div class="container-half container-half-right cover-bg" style="background-image:url(/images/bg4.jpg)"></div>#}
+{#		</section><!-- RECENT POSTS 3 COL BLOCK -->#}
 		<section id="blog-3col">
 			<div class="container">
-				<h2 class="title text-center">Проекты</h2>
+				<h2 class="title text-center">{{ 'Проекты'|trans }}</h2>
 
 				<div class="row">
-					<div class="col-sm-4">
+					{% for project in projects %}
+					<div class="col-sm-6">
 						<div class="post">
+							{% if  project.getMainImage() %}
 							<div class="post-media">
-								<a href="#"><img src="/images/blog/post-img-1.jpg" alt="Resolving the issue with synchronization in old version" class="img-responsive"></a>
+								<a href="{{ path( 'project', {slug: project.url}) }}"><img src="{{ project.getMainImage() }}" alt="{{ project.title }}" class="img-responsive"></a>
 							</div>
+							{% endif %}
 							<div class="post-content">
-								<h4 class="title"><a href="#">Создание цифровой школы</a></h4>
-								<div class="post-desc">You may take this text as a copied and pasted one, but it is not so. Appearances are deceitful. For real, this text was created by our copywriters, so you could see in details how would the final product look<a href="#" class="read-more" title="read more">•••</a></div>
-								<!-- <div class="post-info">
-									<div class="date"><i class="icon icon-clock"></i>16-07-2014</div>
-									<div class="author"><i class="icon icon-user"></i>John Doe</div>
-									<div class="comments"><i class="icon icon-bubble"></i>7 Comments</div>
-								</div> -->
+								<h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></h4>
+								<div class="post-desc">{{ project.getShortDescription()|raw }}<a href="{{ path( 'project', {slug: project.url}) }}" class="read-more" title="read more">•••</a></div>
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-4">
-						<div class="post">
-							<div class="post-media">
-								<a href="#"><img src="/images/blog/post-img-2.jpg" alt="Look for the latest update in coming days" class="img-responsive"></a>
-							</div>
-							<div class="post-content">
-								<h4 class="title"><a href="#">Разработка системы общих компетенций, технологий их формирования и оценки</a></h4>
-								<div class="post-desc">You may take this text as a copied and pasted one, but it is not so. Appearances are deceitful. For real, this text was created by our copywriters, so you could see in details how would the final product look<a href="#" class="read-more" title="read more">•••</a></div>
-								<!-- <div class="post-info">
-									<div class="date"><i class="icon icon-clock"></i>16-07-2014</div>
-									<div class="author"><i class="icon icon-user"></i>John Doe</div>
-									<div class="comments"><i class="icon icon-bubble"></i>7 Comments</div>
-								</div> -->
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<div class="post">
-							<div class="post-media">
-								<a href="#"><img src="/images/blog/post-img-3.jpg" alt="The meeting of developers of cross-platform apps" class="img-responsive"></a>
-							</div>
-							<div class="post-content">
-								<h4 class="title"><a href="#">Цифровое поликультурное образование</a></h4>
-								<div class="post-desc">You may take this text as a copied and pasted one, but it is not so. Appearances are deceitful. For real, this text was created by our copywriters, so you could see in details how would the final product look<a href="#" class="read-more" title="read more">•••</a></div>
-								<div class="post-info">
-
-								</div>
-							</div>
-						</div>
-					</div>
+					{% endfor %}
 				</div>
 			</div>
 		</section>
@@ -156,7 +119,7 @@
 				<div class="col-md-8">
 					<div class="row">
 						<div class="col-md-3">
-							<h4>О нас</h4>
+							<h4><a href="/about-us">{{ 'О нас'|trans }}</a></h4>
 							<!-- <ul class="links-list">
                                 <li><a href="#" target="_blank">Promotion</a></li>
                                 <li><a href="#" target="_blank">Planning</a></li>
@@ -166,7 +129,7 @@
                             </ul> -->
 						</div>
 						<div class="col-md-3">
-							<h4>Цель и задачи проектного офиса</h4>
+							<h4><a href="/goals-and-tasks/">{{ 'Объединим усилия для нового образования'|trans }}</a></h4>
 							<!-- <ul class="links-list">
                                 <li><a href="#" target="_blank">Header</a></li>
                                 <li><a href="#" target="_blank">Description</a></li>
@@ -176,7 +139,7 @@
                             </ul> -->
 						</div>
 						<div class="col-md-3">
-							<h4>Контакты</h4>
+							<h4><a href="/contacts">{{ 'Контакты'|trans }}</a></h4>
 							<!-- <ul class="links-list">
                                 <li><a href="#" target="_blank">Register</a></li>
                                 <li><a href="#" target="_blank">Login</a></li>
@@ -186,14 +149,14 @@
                             </ul> -->
 						</div>
 						<div class="col-md-3">
-							<h4>Проекты</h4>
-							<ul class="links-list">
-								<li><a href="#" target="_blank">Создание цифровой школы</a></li>
-								<li><a href="#" target="_blank">Разработка системы общих компетенций, технологий их формирования и оценки</a></li>
-								<li><a href="#" target="_blank">Цифровое поликультурное образование</a></li>
-								<!-- <li><a href="#" target="_blank">LinkedIn</a></li>
-                                <li><a href="#" target="_blank">Dribbble</a></li> -->
-							</ul>
+							<h4><a href="/projects">{{ 'Проекты'|trans }} </h4>
+{#							<ul class="links-list">#}
+{#								<li><a href="#" target="_blank">Создание цифровой школы</a></li>#}
+{#								<li><a href="#" target="_blank">Разработка системы общих компетенций, технологий их формирования и оценки</a></li>#}
+{#								<li><a href="#" target="_blank">Цифровое поликультурное образование</a></li>#}
+{#								<!-- <li><a href="#" target="_blank">LinkedIn</a></li>#}
+{#                                <li><a href="#" target="_blank">Dribbble</a></li> -->#}
+{#							</ul>#}
 						</div>
 					</div>
 				</div>
@@ -225,14 +188,15 @@
 					</ul>
 				</div>
 				<div class="col-md-6 col-md-pull-6">
-					<img class="logo" src="/images/footer-logo.png" alt="">
-					<span class="editContent">© 2020<br>Проектный офис Александра Данилюка и Аллы Факторович</span>
+{#					<img class="logo" src="/images/footer-logo.png" alt="">#}
+					<span class="editContent">Контакты :<br>E-mail:<a href="mailto:daaf_info@com">daaf_info@com</a></span><br>
+					<span class="editContent">© 2020 Проектный офис Александра Данилюка и Аллы Факторович</span>
 				</div>
 			</div>
 		</div>
 	</footer>
-{% endblock %}
 
+{% endblock %}
 {% block javascripts %}
 	<script src="/scripts/jquery-1.11.2.min.js"></script>
 	<script src="/scripts/bootstrap.min.js"></script>
