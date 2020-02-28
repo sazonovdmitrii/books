@@ -14,8 +14,29 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ProjectsController extends AbstractController
 {
+
+    /**
+     * @Route("/projects/", name="projects")
+     * @param ProjectRepository $projectRepository
+     * @return Response
+     */
+    public function projects(
+        ProjectRepository $projectRepository
+    ) {
+        $projects = $projectRepository->findBy(array(), array('crowdfunding' => 'ASC'));
+
+        if($projects) {
+            return $this->render('projects.html.twig', [
+                'projects' => $projects
+            ]);
+        }
+    }
+
     /**
      * @Route("/projects/{slug}", name="project")
+     * @param string $slug
+     * @param ProjectRepository $projectRepository
+     * @return Response
      */
     public function page(
         string $slug,
@@ -29,4 +50,6 @@ class ProjectsController extends AbstractController
             ]);
         }
     }
+
+
 }
