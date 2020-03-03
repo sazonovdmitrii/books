@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Project;
 use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,11 +24,13 @@ class ProjectsController extends AbstractController
     public function projects(
         ProjectRepository $projectRepository
     ) {
-        $projects = $projectRepository->findBy(array(), array('crowdfunding' => 'ASC'));
+        $projects = $projectRepository->findBy(['crowdfunding' => Project::CROWDFUNDING_TYPE_NO]);
+        $crowdfundingProjects = $projectRepository->findBy(['crowdfunding' => Project::CROWDFUNDING_TYPE_YES]);
 
         if($projects) {
             return $this->render('projects.html.twig', [
-                'projects' => $projects
+                'projects' => $projects,
+                'crowdfunding_projects' => $crowdfundingProjects,
             ]);
         }
     }

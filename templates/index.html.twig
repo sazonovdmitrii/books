@@ -101,10 +101,32 @@
 							{% endif %}
 							<div class="post-content">
 								<h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></h4>
-								<div class="post-desc">{{ project.getShortDescription()|raw }}<a href="{{ path( 'project', {slug: project.url}) }}" class="read-more" title="read more">•••</a></div>
+								<div class="post-desc">{{ project.description|slice(0,500)|raw }}<a href="{{ path( 'project', {slug: project.url}) }}" class="read-more" title="read more">•••</a></div>
 							</div>
 						</div>
 					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</section>
+		<section id="blog-3col">
+			<div class="container">
+				<h2 class="title text-center">{{ 'Краудфайндинг'|trans }}</h2>
+				<div class="row">
+					{% for cproject in crowdfunding_projects %}
+						<div>
+							<div class="post">
+								{% if  cproject.getMainImage() %}
+									<div class="post-media">
+										<a href="{{ path( 'project', {slug: cproject.url}) }}"><img src="{{ cproject.getMainImage() }}" alt="{{ cproject.title }}" class="img-responsive"></a>
+									</div>
+								{% endif %}
+								<div class="post-content">
+									<h4 class="title"><a href="{{ path( 'project', {slug: cproject.url}) }}">{{ cproject.title }}</a></h4>
+									<div class="post-desc">{{ cproject.description|slice(0,500)|raw }}<a href="{{ path( 'project', {slug: cproject.url}) }}" class="read-more" title="read more">•••</a></div>
+								</div>
+							</div>
+						</div>
 					{% endfor %}
 				</div>
 			</div>
@@ -172,20 +194,20 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-md-6 col-md-push-6 text-right">
-					<ul class="share-list">
-						<li>
-							<a href="#" class="goodshare" data-type="fb"><i class="icon icon-facebook2"></i><span class="editContent">Share</span><span data-counter="fb">0</span></a>
-						</li>
-						<li>
-							<a href="#" class="goodshare" data-type="tw"><i class="icon icon-twitter2"></i><span class="editContent">Tweet</span><span data-counter="tw"></span></a>
-						</li>
-						<li>
-							<a href="#" class="goodshare" data-type="gp"><i class="icon icon-googleplus2"></i><span class="editContent">Share</span><span data-counter="gp">0</span></a>
-						</li>
-						<li>
-							<a href="#" class="goodshare" data-type="li"><i class="icon icon-linkedin2"></i><span class="editContent">Share</span><span data-counter="li"></span></a>
-						</li>
-					</ul>
+{#					<ul class="share-list">#}
+{#						<li>#}
+{#							<a href="#" class="goodshare" data-type="fb"><i class="icon icon-facebook2"></i><span class="editContent">Share</span><span data-counter="fb">0</span></a>#}
+{#						</li>#}
+{#						<li>#}
+{#							<a href="#" class="goodshare" data-type="tw"><i class="icon icon-twitter2"></i><span class="editContent">Tweet</span><span data-counter="tw"></span></a>#}
+{#						</li>#}
+{#						<li>#}
+{#							<a href="#" class="goodshare" data-type="gp"><i class="icon icon-googleplus2"></i><span class="editContent">Share</span><span data-counter="gp">0</span></a>#}
+{#						</li>#}
+{#						<li>#}
+{#							<a href="#" class="goodshare" data-type="li"><i class="icon icon-linkedin2"></i><span class="editContent">Share</span><span data-counter="li"></span></a>#}
+{#						</li>#}
+{#					</ul>#}
 				</div>
 				<div class="col-md-6 col-md-pull-6">
 {#					<img class="logo" src="/images/footer-logo.png" alt="">#}
