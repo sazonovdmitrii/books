@@ -30,7 +30,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-						{{ language.current()|upper }} <span class="caret"></span>
+						{{'Язык'|trans}} {{ language.current()|upper }} <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu" role="menu">
 						{% for language in languages %}
@@ -183,9 +183,8 @@
 					</div>
 				</div>
 				<div class="col-md-3 col-md-offset-1 ">
-					<p class="editContent sep-half-bottom">© 2020<br>Проектный офис
-						Александра Данилюка и Аллы Факторович</a></p>
-					<small class="desc-text">Все права защищены</small>
+					<p class="editContent sep-half-bottom">© 2020<br>{{ 'Проектный офис Александра Данилюка и Аллы Факторович'|trans}}</a></p>
+					<small class="desc-text">{{ 'Все права защищены'|trans}}</small>
 				</div>
 			</div>
 		</div>
@@ -211,8 +210,8 @@
 				</div>
 				<div class="col-md-6 col-md-pull-6">
 {#					<img class="logo" src="/images/footer-logo.png" alt="">#}
-					<span class="editContent">Контакты :<br>E-mail:<a href="mailto:daaf_info@com">daaf_info@com</a></span><br>
-					<span class="editContent">© 2020 Проектный офис Александра Данилюка и Аллы Факторович</span>
+					<span class="editContent">{{'Контакты'|trans}} :<br>E-mail:<a href="mailto:daaf_info@com">daaf_info@com</a></span><br>
+					<span class="editContent">© 2020 {{ 'Проектный офис Александра Данилюка и Аллы Факторович'|trans}}</span>
 				</div>
 			</div>
 		</div>
