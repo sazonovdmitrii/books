@@ -1,0 +1,49 @@
+{% extends "index.html.twig" %}
+
+{% block body %}
+    <section id="blog-3col">
+        <div class="container">
+            <h2 class="title text-center">{{ 'Проекты'|trans }}</h2>
+
+            <div class="row">
+                {% for project in projects %}
+                    <div class="col-sm-6">
+                        <div class="post">
+                            {% if  project.getMainImage() %}
+                                <div class="post-media">
+                                    <a href="{{ path( 'project', {slug: project.url}) }}"><img src="{{ project.getMainImage() }}" alt="{{ project.title }}" class="img-responsive"></a>
+                                </div>
+                            {% endif %}
+                            <div class="post-content">
+                                <h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></h4>
+                                <div class="post-desc">{{ project.description|slice(0,500)|raw }}<a href="{{ path( 'project', {slug: project.url}) }}" class="read-more" title="read more">•••</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+    <section id="blog-3col">
+        <div class="container">
+            <h2 class="title text-center">{{ 'Краудфайндинг'|trans }}</h2>
+            <div class="row">
+                {% for cproject in crowdfunding_projects %}
+                    <div>
+                        <div class="post">
+                            {% if  cproject.getMainImage() %}
+                                <div class="post-media">
+                                    <a href="{{ path( 'project', {slug: cproject.url}) }}"><img src="{{ cproject.getMainImage() }}" alt="{{ cproject.title }}" class="img-responsive"></a>
+                                </div>
+                            {% endif %}
+                            <div class="post-content">
+                                <h4 class="title"><a href="{{ path( 'project', {slug: cproject.url}) }}">{{ cproject.title }}</a></h4>
+                                <div class="post-desc">{{ cproject.description|slice(0,500)|raw }}<a href="{{ path( 'project', {slug: cproject.url}) }}" class="read-more" title="read more">•••</a></div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

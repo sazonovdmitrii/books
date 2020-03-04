@@ -7,6 +7,7 @@ use App\Repository\ProjectRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use App\Entity\Project;
 
 /**
  * Class IndexController
@@ -25,11 +26,13 @@ class IndexController extends AbstractController
         BlockRepository $blockRepository,
         ProjectRepository $projectRepository
     ) {
-        $top_block = $blockRepository->findBy(['name' => 'slider_block']);
-        $projects = $projectRepository->findAll();
+        $top_blocks = $blockRepository->findBy(['name' => 'slider_block']);
+        $projects = $projectRepository->findBy(['crowdfunding' => Project::CROWDFUNDING_TYPE_NO]);
+        $crowdfundingProjects = $projectRepository->findBy(['crowdfunding' => Project::CROWDFUNDING_TYPE_YES]);
         return $this->render('index.html.twig', [
-            'top_block' => $top_block[0],
+            'top_block' => $top_blocks[0],
             'projects' => $projects,
+            'crowdfunding_projects' => $crowdfundingProjects,
             'controller_name' => 'RootController',
         ]);
     }

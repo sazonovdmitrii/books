@@ -12,6 +12,10 @@ use Knp\DoctrineBehaviors\Model as ORMBehaviors;
  */
 class Project
 {
+
+    const CROWDFUNDING_TYPE_YES = 1;
+    const CROWDFUNDING_TYPE_NO = 0;
+
     use ORMBehaviors\Translatable\Translatable;
 
     /**
