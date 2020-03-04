@@ -64,73 +64,71 @@
 {% block body %}
 	<div id="wrap">
 		<!-- INTRO HALF RIGHT BLOCK -->
-		<header id="intro-half-right" class="intro-block bg-color3 fixed-bg double-padding" style="background-image:url(/images/bg15.jpg); background-attachment: local;">
-			<div class="container">
-				<div class="row">
-					{{ top_block.content|raw  }}
-				</div>
-			</div>
-		</header><!-- CONTENT HALF LEFT BLOCK -->
-		<!-- NAVIGATION LOGIN FULL -->
-{#		<section id="content-half-left">#}
+{#		<header id="intro-half-right" class="intro-block bg-color3 fixed-bg double-padding" style="background-image:url(/images/bg15.jpg); background-attachment: local;">#}
 {#			<div class="container">#}
 {#				<div class="row">#}
-{#					<div class="col-lg-4 col-md-5">#}
-{#						<div class="editContent">#}
-{#							<h2>Цель и задачи проектного офиса</h2>#}
-{#							<!-- <h4 class="sub-title">Modern solution</h4> -->#}
-{#							<p>In our work we try to use only the most modern, convenient and interesting solutions. We want the template you downloaded look unique and new for such a long time as it is possible. </p>#}
-{#						</div>#}
-{#					</div>#}
+{#					{{ top_block.content|raw  }}#}
 {#				</div>#}
 {#			</div>#}
-{#			<div class="container-half container-half-right cover-bg" style="background-image:url(/images/bg4.jpg)"></div>#}
-{#		</section><!-- RECENT POSTS 3 COL BLOCK -->#}
-		<section id="blog-3col">
+{#		</header><!-- CONTENT HALF LEFT BLOCK -->#}
+		<!-- NAVIGATION LOGIN FULL -->
+		<section id="content-half-left">
 			<div class="container">
-				<h2 class="title text-center">{{ 'Проекты'|trans }}</h2>
-
 				<div class="row">
-					{% for project in projects %}
-					<div class="col-sm-6">
-						<div class="post">
-							{% if  project.getMainImage() %}
-							<div class="post-media">
-								<a href="{{ path( 'project', {slug: project.url}) }}"><img src="{{ project.getMainImage() }}" alt="{{ project.title }}" class="img-responsive"></a>
-							</div>
-							{% endif %}
-							<div class="post-content">
-								<h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></h4>
-								<div class="post-desc">{{ project.description|slice(0,500)|raw }}<a href="{{ path( 'project', {slug: project.url}) }}" class="read-more" title="read more">•••</a></div>
-							</div>
+					<div class="">
+						<div class="">
+							{{ top_block.content|raw  }}
 						</div>
 					</div>
-					{% endfor %}
 				</div>
 			</div>
-		</section>
-		<section id="blog-3col">
-			<div class="container">
-				<h2 class="title text-center">{{ 'Краудфайндинг'|trans }}</h2>
-				<div class="row">
-					{% for cproject in crowdfunding_projects %}
-						<div>
-							<div class="post">
-								{% if  cproject.getMainImage() %}
-									<div class="post-media">
-										<a href="{{ path( 'project', {slug: cproject.url}) }}"><img src="{{ cproject.getMainImage() }}" alt="{{ cproject.title }}" class="img-responsive"></a>
-									</div>
-								{% endif %}
-								<div class="post-content">
-									<h4 class="title"><a href="{{ path( 'project', {slug: cproject.url}) }}">{{ cproject.title }}</a></h4>
-									<div class="post-desc">{{ cproject.description|slice(0,500)|raw }}<a href="{{ path( 'project', {slug: cproject.url}) }}" class="read-more" title="read more">•••</a></div>
-								</div>
-							</div>
-						</div>
-					{% endfor %}
-				</div>
-			</div>
-		</section>
+			<div class="container-half container-half-right cover-bg" style="background-image:url(/images/bg15.jpg)"></div>
+		</section><!-- RECENT POSTS 3 COL BLOCK -->
+{#		<section id="blog-3col">#}
+{#			<div class="container">#}
+{#				<h2 class="title text-center">{{ 'Проекты'|trans }}</h2>#}
+
+{#				<div class="row">#}
+{#					{% for project in projects %}#}
+{#					<div class="col-sm-6">#}
+{#						<div class="post">#}
+{#							{% if  project.getMainImage() %}#}
+{#							<div class="post-media">#}
+{#								<a href="{{ path( 'project', {slug: project.url}) }}"><img src="{{ project.getMainImage() }}" alt="{{ project.title }}" class="img-responsive"></a>#}
+{#							</div>#}
+{#							{% endif %}#}
+{#							<div class="post-content">#}
+{#								<h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></h4>#}
+{#								<div class="post-desc">{{ project.description|slice(0,500)|raw }}<a href="{{ path( 'project', {slug: project.url}) }}" class="read-more" title="read more">•••</a></div>#}
+{#							</div>#}
+{#						</div>#}
+{#					</div>#}
+{#					{% endfor %}#}
+{#				</div>#}
+{#			</div>#}
+{#		</section>#}
+{#		<section id="blog-3col">#}
+{#			<div class="container">#}
+{#				<h2 class="title text-center">{{ 'Краудфайндинг'|trans }}</h2>#}
+{#				<div class="row">#}
+{#					{% for cproject in crowdfunding_projects %}#}
+{#						<div>#}
+{#							<div class="post">#}
+{#								{% if  cproject.getMainImage() %}#}
+{#									<div class="post-media">#}
+{#										<a href="{{ path( 'project', {slug: cproject.url}) }}"><img src="{{ cproject.getMainImage() }}" alt="{{ cproject.title }}" class="img-responsive"></a>#}
+{#									</div>#}
+{#								{% endif %}#}
+{#								<div class="post-content">#}
+{#									<h4 class="title"><a href="{{ path( 'project', {slug: cproject.url}) }}">{{ cproject.title }}</a></h4>#}
+{#									<div class="post-desc">{{ cproject.description|slice(0,500)|raw }}<a href="{{ path( 'project', {slug: cproject.url}) }}" class="read-more" title="read more">•••</a></div>#}
+{#								</div>#}
+{#							</div>#}
+{#						</div>#}
+{#					{% endfor %}#}
+{#				</div>#}
+{#			</div>#}
+{#		</section>#}
 		</div>
 {% endblock %}
 
