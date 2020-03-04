@@ -1,5 +1,5 @@
 twig:
     globals:
         helper: '@App\Service\Twig\Helper'
-        languages: [ru, de, en]
+        languages: [ru, en]
         language: '@App\Service\Twig\Language'

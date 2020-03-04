@@ -1,5 +1,5 @@
 a2lix_translation_form:
     locale_provider: default       # [1]
-    locales: [ru, de, en]      # [1-a]
+    locales: [ru, en]      # [1-a]
     default_locale: ru             # [1-b]
     required_locales: [ru]         # [1-c]
