@@ -12,15 +12,15 @@
 
             </div>
             <div class="row">
-                <p>
-                    Или задайте вопрос воспользовавшись формой ниже:
-                </p>
+{#                <p>#}
+{#                    Или задайте вопрос воспользовавшись формой ниже:#}
+{#                </p>#}
                 {% for message in app.flashes('success') %}
                     <div class="alert alert-success">
                         {{ message }}
                     </div>
                 {% endfor %}
-                {{ form(form) }}
+{#                {{ form(form) }}#}
             </div>
         </div>
     </section>
