@@ -3,3 +3,4 @@ twig:
         helper: '@App\Service\Twig\Helper'
         languages: [ru, en]
         language: '@App\Service\Twig\Language'
+        projects: '@App\Service\Twig\Projects'

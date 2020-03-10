@@ -48,13 +48,18 @@
 			</a>
 			<button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse" data-target=".navMenuCollapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 			<div class="collapse navbar-collapse navMenuCollapse">
-				<div class="login-panel"><a class="btn btn-primary" href="/projects">{{ 'Проекты'|trans }} <i class="icon right-icon icon-download"></i></a></div>
+				{% for project in projects.getCroudfindingProjects() %}
+				<div class="login-panel"><a class="btn btn-primary" href="{{ path( 'project', {slug: project.url}) }}">{{'Краудфайндинг'|trans}} <i class="icon right-icon icon-download"></i></a></div>
+				{% endfor %}
 				<ul class="nav">
 					<li><a href="/">{{ 'Главная'|trans }}</a></li>
 					<li><a href="/about-us">{{ 'О нас'|trans }}</a></li>
 					<li><a href="/goals-and-tasks/">{{ 'Объединим усилия для нового образования'|trans }}</a></li>
 					<li><a href="/contacts">{{ 'Контакты'|trans }}</a></li>
-{#					<li><a href="/projects">{{ 'Проекты'|trans }}</a></li>#}
+
+					{% for project in projects.getProjects() %}
+						<li><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>
@@ -73,8 +78,8 @@
 {#		</header><!-- CONTENT HALF LEFT BLOCK -->#}
 		<!-- NAVIGATION LOGIN FULL -->
 		<section id="content-half-left">
-			<div class="container">
-				<div class="row">
+			<div class="container" style="width: 100%">
+				<div class="row"style="margin: 0" >
 					<div class="">
 						<div class="">
 							{{ top_block.content|raw  }}
@@ -82,7 +87,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="container-half container-half-right cover-bg" style="background-image:url(/images/bg15.jpg)"></div>
+			<div class="container-half container-half-right cover-bg" style="background-image:url(/images/bg115.jpg)"></div>
 		</section><!-- RECENT POSTS 3 COL BLOCK -->
 {#		<section id="blog-3col">#}
 {#			<div class="container">#}

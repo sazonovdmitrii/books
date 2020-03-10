@@ -31,7 +31,7 @@ class IndexController extends AbstractController
         $crowdfundingProjects = $projectRepository->findBy(['crowdfunding' => Project::CROWDFUNDING_TYPE_YES]);
         return $this->render('index.html.twig', [
             'top_block' => $top_blocks[0],
-            'projects' => $projects,
+            #'projects' => $projects,
             'crowdfunding_projects' => $crowdfundingProjects,
             'controller_name' => 'RootController',
         ]);
