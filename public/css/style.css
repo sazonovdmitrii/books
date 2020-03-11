@@ -842,7 +842,7 @@ a.round-btn:hover{
 .contain-bg {
     background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
 }
 
 .contain-bg {
@@ -2333,7 +2333,7 @@ ul.diagram-horizontal li span.column span {
 img.full-height {
     height: 100%;
     width: auto;
-} 
+}
 
 img.full-width {
     width: 100%;
