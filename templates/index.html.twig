@@ -152,7 +152,7 @@
                             </ul> -->
 						</div>
 						<div class="col-md-3">
-							<h4><a href="/goals-and-tasks/">{{ 'Объединим усилия для нового образования'|trans }}</a></h4>
+							<h4><a href="/contacts">{{ 'Контакты'|trans }}</a></h4>
 							<!-- <ul class="links-list">
                                 <li><a href="#" target="_blank">Header</a></li>
                                 <li><a href="#" target="_blank">Description</a></li>
@@ -162,7 +162,7 @@
                             </ul> -->
 						</div>
 						<div class="col-md-3">
-							<h4><a href="/contacts">{{ 'Контакты'|trans }}</a></h4>
+							<h4><a href="/projects">{{ 'Проекты'|trans }} </h4>
 							<!-- <ul class="links-list">
                                 <li><a href="#" target="_blank">Register</a></li>
                                 <li><a href="#" target="_blank">Login</a></li>
@@ -172,14 +172,18 @@
                             </ul> -->
 						</div>
 						<div class="col-md-3">
-							<h4><a href="/projects">{{ 'Проекты'|trans }} </h4>
-{#							<ul class="links-list">#}
-{#								<li><a href="#" target="_blank">Создание цифровой школы</a></li>#}
-{#								<li><a href="#" target="_blank">Разработка системы общих компетенций, технологий их формирования и оценки</a></li>#}
-{#								<li><a href="#" target="_blank">Цифровое поликультурное образование</a></li>#}
-{#								<!-- <li><a href="#" target="_blank">LinkedIn</a></li>#}
-{#                                <li><a href="#" target="_blank">Dribbble</a></li> -->#}
-{#							</ul>#}
+							<h4><a href="">{{ 'Язык'|trans }} </h4>
+							<ul class="links-list">
+								{% for language in languages %}
+									<li>
+										<a href="{{ path('locale', {locale: language}) }}" class="language" rel="{{ language }}">
+											{{ language|upper }}
+										</a>
+									</li>
+								{% endfor %}
+								<!-- <li><a href="#" target="_blank">LinkedIn</a></li>
+                                <li><a href="#" target="_blank">Dribbble</a></li> -->
+							</ul>
 						</div>
 					</div>
 				</div>
