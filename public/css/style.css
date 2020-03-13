@@ -31,7 +31,7 @@ body {
 
 section,
 header {
-    padding-top: 150px;
+    padding-top: 5%;
     padding-bottom: 150px;
     position: relative;
     overflow: hidden;
@@ -44,6 +44,7 @@ header.dark-bg,
 .no-sep {
     border-bottom: none;
 }
+
 
 .container,
 .container-fluid {
