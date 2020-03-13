@@ -48,17 +48,15 @@
 			</a>
 			<button class="round-toggle navbar-toggle menu-collapse-btn collapsed" data-toggle="collapse" data-target=".navMenuCollapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
 			<div class="collapse navbar-collapse navMenuCollapse">
-				{% for project in projects.getCroudfindingProjects() %}
-				<div class="login-panel"><a class="btn btn-primary" href="{{ path( 'project', {slug: project.url}) }}">{{'Краудфайндинг'|trans}} <i class="icon right-icon icon-download"></i></a></div>
-				{% endfor %}
+				<div class="login-panel"><a class="btn btn-primary" href="/projects">{{'Книги'|trans}} <i class="icon right-icon icon-download"></i></a></div>
 				<ul class="nav">
 					<li><a href="/">{{ 'Главная'|trans }}</a></li>
 					<li><a href="/about-us">{{ 'О нас'|trans }}</a></li>
 					<li><a href="/goals-and-tasks/">{{ 'Объединим усилия для нового образования'|trans }}</a></li>
 					<li><a href="/contacts">{{ 'Контакты'|trans }}</a></li>
 
-					{% for project in projects.getProjects() %}
-						<li><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></li>
+					{% for project_m in projects.getProjects() %}
+						<li><a href="{{ path( 'project', {slug: project_m.url}) }}">{{ project_m.title }}</a></li>
 					{% endfor %}
 				</ul>
 			</div>

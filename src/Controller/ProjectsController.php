@@ -24,12 +24,12 @@ class ProjectsController extends AbstractController
     public function projects(
         ProjectRepository $projectRepository
     ) {
-        $projects = $projectRepository->findBy(['crowdfunding' => Project::CROWDFUNDING_TYPE_NO]);
+        $projects_p = $projectRepository->findBy(['crowdfunding' => Project::CROWDFUNDING_TYPE_NO]);
         $crowdfundingProjects = $projectRepository->findBy(['crowdfunding' => Project::CROWDFUNDING_TYPE_YES]);
 
-        if($projects) {
+        if($projects_p) {
             return $this->render('projects.html.twig', [
-                'projects' => $projects,
+                'projects_p' => $projects_p,
                 'crowdfunding_projects' => $crowdfundingProjects,
             ]);
         }
