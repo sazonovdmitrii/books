@@ -6,3 +6,6 @@ easy_admin_bundle:
 urls:
   path:     /{slug}
   controller: App\Controller\CmsController::page
+
+app_yandex:
+  resource: "Lp/PaymentBundle/Resources/config/routing.yaml"

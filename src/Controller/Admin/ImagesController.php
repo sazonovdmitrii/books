@@ -77,7 +77,7 @@ class ImagesController extends AdminController
     }
 
     /**
-     * @Route("/admin/images/delete", methods={"POST","HEAD"})
+     * @Route("/admin/images/delete", methods={"POST", "GET","HEAD"})
      */
     public function delete(Request $request)
     {
@@ -93,6 +93,35 @@ class ImagesController extends AdminController
         }
 
         @unlink($this->getPath($type) . '/' . $image->getPath());
+
+        $response = new Response();
+        $response->setContent(json_encode([]));
+        $response->headers->set('Content-Type', 'application/json');
+
+        return $response;
+    }
+
+    /**
+     * @Route("/admin/images/delete_once", methods={"POST", "GET","HEAD"})
+     */
+    public function delete_once(Request $request)
+    {
+        $type = $request->query->get('type');
+
+        $entity = $this->entityManager
+            ->getRepository('App:' . $type)
+            ->find((int)$request->query->get('eid'));
+
+        $parted = implode('', array_map(function($e) { return ucfirst($e); }, explode('_', $request->query->get('name'))));
+        $method = 'get' . $parted;
+
+        $setMethod = 'set' . $parted;
+        $entity->$setMethod('');
+
+        $this->entityManager->persist($entity);
+        $this->entityManager->flush();
+
+        @unlink($this->getParameter('kernel.project_dir') . $entity->$method());
 
         $response = new Response();
         $response->setContent(json_encode([]));

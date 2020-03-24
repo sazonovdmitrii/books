@@ -17,7 +17,7 @@
             <img src="{{ src }}" class="img-thumbnail">
             <div>
                 <button onclick="delete_image(this)" class="btn btn-default" type="button">
-                        <span class="glyph icon glyphicon-trash">Удалить</span>
+                    <span class="glyph icon glyphicon-trash">Удалить</span>
                 </button>
             </div>
         </div>
@@ -46,9 +46,10 @@
     function delete_image(btn) {
         if (confirm('Удалить картинку?')) {
             var img = $(btn).parents(".image_item");
-            $.get("/admin/images/delete?" + $.param({
-                'eid': img.attr('eid'),
-                'type': '{{ type }}'
+            $.get("/admin/images/delete_once?" + $.param({
+                'eid': {{ entity.id }},
+                'type': '{{ type }}',
+                'name': '{{ name }}'
             }), {}, function (data) {
                 if (data.error) {
                     alert(data.error);
