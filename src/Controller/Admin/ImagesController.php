@@ -77,7 +77,7 @@ class ImagesController extends AdminController
     }
 
     /**
-     * @Route("/admin/images/delete", methods={"POST","HEAD"})
+     * @Route("/admin/images/delete", methods={"POST", "GET","HEAD"})
      */
     public function delete(Request $request)
     {
