@@ -5,7 +5,9 @@
         <div class="container">
             <div class="row">
                 <h2 class="title text-center">{{ contacts_block.title}}</h2>
-                {{ contacts_block.content|raw }}
+                <div class="contacts-block">
+                    {{ contacts_block.content|raw }}
+                </div>
             </div>
         </div>
     </section>

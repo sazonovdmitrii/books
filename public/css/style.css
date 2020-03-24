@@ -3949,3 +3949,15 @@ ul.posts-line .post .title {
 .mt-28 {
     margin-top: 28px;
 }
+
+.contacts-block {
+    margin: auto;
+    padding: 30px;
+    width: 70%;
+    text-align: justify;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.contacts-block a {
+    color: #337ab7;
+}
