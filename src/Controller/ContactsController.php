@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Feedback;
+use App\Repository\BlockRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -23,7 +24,7 @@ class ContactsController extends AbstractController
     /**
      * @Route("/contacts", name="contacts")
      */
-    public function index(Request $request, TranslatorInterface $translator)
+    public function index(Request $request, TranslatorInterface $translator, BlockRepository $blockRepository)
     {
         $feedback = new Feedback();
 
@@ -73,9 +74,10 @@ class ContactsController extends AbstractController
 
             return $this->redirectToRoute('contacts');
         }
-
+        $contacts_block = $blockRepository->findBy(['name' => 'contacts_page_content']);
         return $this->render('contacts.html.twig', [
             'form' => $form->createView(),
+            'contacts_block' => $contacts_block[0]
         ]);
     }
 }
