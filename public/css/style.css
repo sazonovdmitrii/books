@@ -3941,3 +3941,11 @@ ul.posts-line .post .title {
     height: 600px;
     background-size: cover;
 }
+
+.lh-30 {
+    line-height: 30px;
+}
+
+.mt-28 {
+    margin-top: 28px;
+}
