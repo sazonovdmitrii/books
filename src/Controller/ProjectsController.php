@@ -50,7 +50,7 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/projects/payment", name="project")
+     * @Route("/projects/payment", name="project_payment")
      * @param ProjectRepository $projectRepository
      * @param Request $request
      * @param PaymentInterface $paymentService
