@@ -32,6 +32,11 @@ class ProjectTranslation
      */
     private $short_description;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $short_title;
+
     public function getTitle(): ?string
     {
         return $this->title;
@@ -76,6 +81,18 @@ class ProjectTranslation
     public function setPrice(?float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getShortTitle(): ?string
+    {
+        return $this->short_title;
+    }
+
+    public function setShortTitle(?string $short_title): self
+    {
+        $this->short_title = $short_title;
 
         return $this;
     }
