@@ -25,7 +25,7 @@ class ProjectsController extends AbstractController
     public function projects(ProjectRepository $projectRepository)
     {
         return $this->render('projects.html.twig', [
-            'projects' => $projectRepository->findBy(
+            'projects_books' => $projectRepository->findBy(
                 ['crowdfunding' => Project::CROWDFUNDING_TYPE_NO]
             ),
             'crowdfunding_projects' => $projectRepository->findBy(
