@@ -3255,8 +3255,8 @@ a.top-arrow:hover {
 ----------------------------------------------------------------------------------------*/
 
 footer {
-    padding-top: 80px;
-    padding-bottom: 80px;
+    padding-top: 20px;
+    padding-bottom: 10px;
 }
 
 footer h4 {
@@ -3965,4 +3965,13 @@ blockquote.main-blockquote {
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
     box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.mb-0 {
+    margin-bottom: 0;
+}
+
+ul.footer-dropdown-menu {
+    min-width: 50px;
+    left: auto;
 }
