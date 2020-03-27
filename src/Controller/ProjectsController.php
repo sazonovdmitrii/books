@@ -35,21 +35,6 @@ class ProjectsController extends AbstractController
     }
 
     /**
-     * @Route("/projects/{slug}", name="project")
-     * @param string $slug
-     * @param ProjectRepository $projectRepository
-     * @return Response
-     */
-    public function page($slug, ProjectRepository $projectRepository)
-    {
-        return $this->render('project.html.twig', [
-            'project' => $projectRepository->findOneBy(
-                ['url' =>  $slug]
-            )
-        ]);
-    }
-
-    /**
      * @Route("/projects/payment", name="project_payment")
      * @param ProjectRepository $projectRepository
      * @param Request $request
@@ -64,9 +49,24 @@ class ProjectsController extends AbstractController
         if($projectId = $request->get('projectId')) {
             $project = $projectRepository->find($projectId);
             return $this->json([
-                    'link' => $paymentService->setOrder($project)->getPaymentLink($project)
-                ]);
+                'link' => $paymentService->setOrder($project)->getPaymentLink($project)
+            ]);
         }
         exit;
+    }
+
+    /**
+     * @Route("/projects/{slug}", name="project")
+     * @param string $slug
+     * @param ProjectRepository $projectRepository
+     * @return Response
+     */
+    public function page($slug, ProjectRepository $projectRepository)
+    {
+        return $this->render('project.html.twig', [
+            'project' => $projectRepository->findOneBy(
+                ['url' =>  $slug]
+            )
+        ]);
     }
 }
