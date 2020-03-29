@@ -11,13 +11,17 @@
                         FONT (OPEN SANS) IMPORT FROM GOOGLE FONTS 
 -----------------------------------------------------------------------------------------*/
 
+@font-face {
+    font-family: Cambria, serif;
+    src: url(./public/fonts/cambria.ttc);
+   }
 
 /*----------------------------------------------------------------------------------------
                         COMMON STYLES
 -----------------------------------------------------------------------------------------*/
 
 body {
-    font-family: 'Hind', sans-serif;
+    font-family: 'Cambria', serif;
     font-size: 17px;
     font-weight: lighter;
     line-height: 1.5;
@@ -69,7 +73,7 @@ h4,
 h5 {
     color: #222;
     line-height: 1.2;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Cambria', serif;
     font-weight: 100;
     letter-spacing: 0.5px;
 }
@@ -130,7 +134,6 @@ blockquote {
     position: relative;
     overflow: hidden;
     text-align: left;
-    border-radius: 15px;
     border: 1px solid #e8e8e8;
 }
 
@@ -1085,7 +1088,7 @@ a.panel-heading.collapsed:after {
 .countdown > div div {
     font-size: 80px;
     line-height: 1;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Cambria', serif;
 }
 
 .countdown em {
@@ -1255,7 +1258,7 @@ a.panel-heading.collapsed:after {
 
 .modalDialog {
     position: fixed;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Cambria', serif;
     top: 0;
     right: 0;
     bottom: 0;
@@ -2017,7 +2020,7 @@ ul.step-left-block li .step-num {
     top: 0;
     border: 1px solid #00c0ff;
     border-radius: 50%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Cambria', serif;
     font-weight: 100;
     text-align: center;
     line-height: 100px;
