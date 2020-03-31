@@ -15,7 +15,7 @@
                                 {% endif %}
                             </div>
                             <div class="post-content">
-                                <h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></h4>
+                                <h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.getShortTitle() }}</a></h4>
                                 <div class="post-desc" style="min-height: 80px;">{{ project.getShortDescription()|slice(0,300)|raw }}</div>
                             </div>
                             <div class="post-content">
