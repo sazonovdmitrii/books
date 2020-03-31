@@ -128,6 +128,14 @@ ul {
     padding-bottom: 20px;
 }
 
+.annotation ul {
+    list-style-position: outside;
+    list-style-type: circle;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    text-indent: 0;
+}
+
 blockquote {
     padding: 40px;
     display: block;
@@ -3980,4 +3988,12 @@ blockquote.main-blockquote {
 ul.footer-dropdown-menu {
     min-width: 50px;
     left: auto;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
 }
