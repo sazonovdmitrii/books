@@ -11,13 +11,17 @@
                         FONT (OPEN SANS) IMPORT FROM GOOGLE FONTS 
 -----------------------------------------------------------------------------------------*/
 
+@font-face {
+    font-family: Cambria, serif;
+    src: url(./public/fonts/cambria.ttc);
+   }
 
 /*----------------------------------------------------------------------------------------
                         COMMON STYLES
 -----------------------------------------------------------------------------------------*/
 
 body {
-    font-family: 'Hind', sans-serif;
+    font-family: 'Cambria', serif;
     font-size: 17px;
     font-weight: lighter;
     line-height: 1.5;
@@ -69,7 +73,7 @@ h4,
 h5 {
     color: #222;
     line-height: 1.2;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Cambria', serif;
     font-weight: 100;
     letter-spacing: 0.5px;
 }
@@ -124,14 +128,21 @@ ul {
     padding-bottom: 20px;
 }
 
+.annotation ul {
+    list-style-position: outside;
+    list-style-type: circle;
+    padding-bottom: 20px;
+    padding-left: 25px;
+    text-indent: 0;
+}
+
 blockquote {
     padding: 40px;
     display: block;
     position: relative;
     overflow: hidden;
     text-align: left;
-    border-radius: 15px;
-    border: 1px solid #e8e8e8;
+    border: 2px solid #00c0ff;
 }
 
 blockquote small {
@@ -1085,7 +1096,7 @@ a.panel-heading.collapsed:after {
 .countdown > div div {
     font-size: 80px;
     line-height: 1;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Cambria', serif;
 }
 
 .countdown em {
@@ -1255,7 +1266,7 @@ a.panel-heading.collapsed:after {
 
 .modalDialog {
     position: fixed;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Cambria', serif;
     top: 0;
     right: 0;
     bottom: 0;
@@ -2017,7 +2028,7 @@ ul.step-left-block li .step-num {
     top: 0;
     border: 1px solid #00c0ff;
     border-radius: 50%;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Cambria', serif;
     font-weight: 100;
     text-align: center;
     line-height: 100px;
@@ -3964,7 +3975,10 @@ ul.posts-line .post .title {
 blockquote.main-blockquote {
     border-bottom-left-radius: 15px;
     border-top-right-radius: 15px;
-    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    box-shadow: 0 3px 1px -2px rgba(0, 192, 255, 0.2), 0 2px 2px 0 rgba(0, 192, 255, 0.50), 0 1px 5px 0 rgba(0, 192, 255, 1);
+    float: right;
+    margin-left: 30px;
+    width: 50%;
 }
 
 .mb-0 {
@@ -3974,4 +3988,12 @@ blockquote.main-blockquote {
 ul.footer-dropdown-menu {
     min-width: 50px;
     left: auto;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.mb-20 {
+    margin-bottom: 20px;
 }

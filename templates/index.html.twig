@@ -56,7 +56,7 @@
 					<li><a href="/contacts">{{ 'Контакты'|trans }}</a></li>
 
 					{% for project_m in projects.getProjects() %}
-						<li><a href="{{ path( 'project', {slug: project_m.url}) }}">{{ project_m.title }}</a></li>
+						<li><a href="{{ path( 'project', {slug: project_m.url}) }}">{{ project_m.getShortTitle() }}</a></li>
 					{% endfor %}
 				</ul>
 			</div>

@@ -5,14 +5,17 @@
         <div class="container">
             <h2 class="title text-center">{{ 'Книги'|trans }}</h2>
 
-            <div class="row">
+            <div class="row flex-wrap">
                 {% for project in projects_books %}
-                    <div class="col-sm-6">
+                    <div class="col-12 col-md-6">
                         <div class="post">
-                            {% if  project.getMainImage() %}
-                            {% endif %}
                             <div class="post-content">
-                                <h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.title }}</a></h4>
+                                {% if  project.getMainImage() %}
+                                    <img src="{{ project.getMainImage() }}" class="w-100">
+                                {% endif %}
+                            </div>
+                            <div class="post-content">
+                                <h4 class="title"><a href="{{ path( 'project', {slug: project.url}) }}">{{ project.getShortTitle() }}</a></h4>
                                 <div class="post-desc" style="min-height: 80px;">{{ project.getShortDescription()|slice(0,300)|raw }}</div>
                             </div>
                             <div class="post-content">
@@ -23,10 +26,16 @@
                                        <input type="text" id="email"/><br/>
                                        <button onclick="processPayment({{ project.id }})">Оплатить</button>
                                    </div>
-                                   <div style="white-space: pre-line;" id="" class="btn btn-lg btn-block btn-primary">
-                                       <a data-fancybox data-src="#hidden-content-{{ project.id }}" href="javascript:;">Получить полный текст и
-                                       поддержать проект</a>
-                                   </div>
+                                    <div class="btn btn-lg btn-block btn-primary mb-20">
+                                        <a href="#">
+                                            Читать содержание и введение
+                                        </a>
+                                    </div>
+                                    <div id="" class="btn btn-lg btn-block btn-primary">
+                                        <a data-fancybox data-src="#hidden-content-{{ project.id }}" href="javascript:;">
+                                            Получить полный текст и поддержать проект
+                                        </a>
+                                    </div>
                                </div>
                             </div>
                         </div>
