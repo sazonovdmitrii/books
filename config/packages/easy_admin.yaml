@@ -68,6 +68,30 @@ easy_admin:
                     - { property: link, label: 'Файл', type_options: { block_name: 'file'}}
                     - { type: 'tab' , label: 'Адреса' }
                     - { property: url, label: 'Адрес проекта' }
+        Transaction:
+            class: App\Entity\Transaction
+            label: 'Оплаты'
+            disabled_actions: ['new', 'edit', 'delete']
+            list:
+                title: 'Оплаты'
+                actions: ['show']
+                fields:
+                    - id
+                    - { property: title, label: 'Описание метода' }
+                    - { property: event, label: 'Платежный статус' }
+                    - { property: amount, label: 'Сумма платежа (руб.)' }
+                    - { property: triggered_at, label: 'Создано' }
+                    - { property: method, label: 'Способ платежа' }
+            show:
+                fields:
+                    - { property: description, label: 'Заказ' }
+                    - { property: type, label: 'Тип' }
+                    - { property: triggered_at, label: 'Создано' }
+                    - { property: event, label: 'Платежный статус' }
+                    - { property: external_id, label: 'Идентификатор транзакции' }
+                    - { property: amount, label: 'Сумма платежа (руб.)' }
+                    - { property: method, label: 'Способ платежа' }
+                    - { property: title, label: 'Описание метода' }
         Configuration:
             label: 'Конфигурация сайта'
             class: App\Entity\Configuration

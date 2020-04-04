@@ -48,7 +48,7 @@ class YandexKassa implements PaymentMethodInterface
                     'type' => 'redirect',
                     'return_url' => $this->config->get('yandex_return_url')
                 ),
-                'description' => 'Заказ №' . $order->getId(),
+                'description' => 'Заказ ' . md5(time()),
             ),
             $idempotenceKey
         );

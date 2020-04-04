@@ -5,3 +5,7 @@ app_yandex_payment:
 app_yandex_success:
   path: /app/yandex/success
   controller: App\Lp\PaymentBundle\Controller\YandexController::success
+
+app_checkout_success:
+  path: /checkout/success
+  controller: App\Lp\PaymentBundle\Controller\YandexController:transaction
