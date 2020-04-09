@@ -43,6 +43,7 @@ class YandexKassa implements PaymentMethodInterface
                     'value' => $order->getPrice(),
                     'currency' => 'RUB',
                 ),
+                'capture' => true,
                 'payment_method_data' => array(
                     'type' => 'bank_card',
                 ),
