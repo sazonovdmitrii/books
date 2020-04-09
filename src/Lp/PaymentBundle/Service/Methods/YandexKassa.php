@@ -35,6 +35,8 @@ class YandexKassa implements PaymentMethodInterface
 
         $idempotenceKey = uniqid('', true);
 
+        $orderId =  md5(time().rand(0,10));
+
         $response = $client->createPayment(
             array(
                 'amount' => array(
@@ -46,12 +48,13 @@ class YandexKassa implements PaymentMethodInterface
                 ),
                 'confirmation' => array(
                     'type' => 'redirect',
-                    'return_url' => $this->config->get('yandex_return_url')
+                    'return_url' => $this->config->get('yandex_return_url') . '?orderId=' . $orderId
                 ),
-                'description' => 'Заказ ' . md5(time()),
+                'description' => 'Заказ ' . $orderId,
             ),
             $idempotenceKey
         );
+
         return $response->getConfirmation()->getConfirmationUrl();
     }
 
