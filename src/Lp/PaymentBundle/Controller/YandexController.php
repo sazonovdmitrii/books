@@ -3,9 +3,11 @@
 namespace App\Lp\PaymentBundle\Controller;
 
 use App\Entity\Transaction;
+use App\Repository\OrdersRepository;
 use App\Repository\TransactionRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 
 /**
  * Class YandexController
@@ -43,36 +45,45 @@ class YandexController extends AbstractController
         return $this->json(['success' => 200]);
     }
 
-    public function success()
+    public function success(Request $request, OrdersRepository $ordersRepository)
     {
-        return $this->json(['success' => 200]);
+        $order = $ordersRepository->findOneBy(
+            ['external_payment_id' => $request->get('orderId')]
+        );
+        return $this->render('@LpPayment/order/success.html.twig', [
+            'order' => $order
+        ]);
     }
 
     public function transaction(
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        TransactionRepository $transactionRepository
     ) {
-        $transaction = new Transaction();
-
-        $transaction->setType('yandex');
-
         $source = file_get_contents('php://input');
-        $transaction->setData($source);
-
         $transactionData = json_decode($source);
-        $transaction->setEvent($transactionData->event);
-        $transaction->setExternalId($transactionData->object->id);
-        $transaction->setStatus($transactionData->object->status);
-        $transaction->setAmount($transactionData->object->amount->value);
-        $transaction->setCapturedAt($transactionData->object->created_at);
-        $transaction->setTriggeredAt($transactionData->object->captured_at);
-        $transaction->setDescription($transactionData->object->description);
-        $transaction->setMethod($transactionData->object->payment_method->type);
-        $transaction->setCardFirst($transactionData->object->payment_method->card->first6);
-        $transaction->setCardLast($transactionData->object->payment_method->card->last4);
-        $transaction->setTitle($transactionData->object->payment_method->title);
+        if($transactionData->object->id) {
+            $transaction = $transactionRepository
+                ->findOneBy(['external_id' => $transactionData->object->id]);
+            if($transaction && $transaction->getId()) {
+                $transaction->setType('yandex');
+                $transaction->setEvent($transactionData->event);
+                $transaction->setExternalId($transactionData->object->id);
+                $transaction->setStatus($transactionData->object->status);
+                $transaction->setAmount($transactionData->object->amount->value);
+                $transaction->setCapturedAt($transactionData->object->created_at);
+                if($transactionData->object->status != 'canceled') {
+                    $transaction->setTriggeredAt($transactionData->object->captured_at);
+                    $transaction->setCardFirst($transactionData->object->payment_method->card->first6);
+                    $transaction->setCardLast($transactionData->object->payment_method->card->last4);
+                    $transaction->setTitle($transactionData->object->payment_method->title);
+                }
+                $transaction->setDescription($transactionData->object->description);
+                $transaction->setMethod($transactionData->object->payment_method->type);
 
-        $entityManager->persist($transaction);
-        $entityManager->flush();
+                $entityManager->persist($transaction);
+                $entityManager->flush();
+            }
+        }
 
         return $this->json(['success' => 200]);
     }

@@ -25,7 +25,6 @@ class YandexKassa implements PaymentMethodInterface
      * @throws \YandexCheckout\Common\Exceptions\UnauthorizedException
      */
     public function getPaymentLink($order)
-
     {
         $client = new Client();
         $client->setAuth(
@@ -34,8 +33,6 @@ class YandexKassa implements PaymentMethodInterface
         );
 
         $idempotenceKey = uniqid('', true);
-
-        $orderId =  md5(time().rand(0,10));
 
         $response = $client->createPayment(
             array(
@@ -49,14 +46,14 @@ class YandexKassa implements PaymentMethodInterface
                 ),
                 'confirmation' => array(
                     'type' => 'redirect',
-                    'return_url' => $this->config->get('yandex_return_url') . '?orderId=' . $orderId
+                    'return_url' => $this->config->get('yandex_return_url') . '?orderId=' . $order->getExternalPaymentId()
                 ),
-                'description' => 'Заказ ' . $orderId,
+                'description' => 'Заказ ' . $order->getId(),
             ),
             $idempotenceKey
         );
 
-        return $response->getConfirmation()->getConfirmationUrl();
+        return $response;
     }
 
     /**

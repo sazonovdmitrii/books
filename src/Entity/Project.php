@@ -55,9 +55,15 @@ class Project
      */
     private $crowdfunding;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Orders", mappedBy="project")
+     */
+    private $orders;
+
     public function __construct()
     {
         $this->bookHashes = new ArrayCollection();
+        $this->orders = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -166,6 +172,37 @@ class Project
     public function setCrowdfunding(?bool $crowdfunding): self
     {
         $this->crowdfunding = $crowdfunding;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Orders[]
+     */
+    public function getOrders(): Collection
+    {
+        return $this->orders;
+    }
+
+    public function addOrder(Orders $order): self
+    {
+        if (!$this->orders->contains($order)) {
+            $this->orders[] = $order;
+            $order->setProject($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOrder(Orders $order): self
+    {
+        if ($this->orders->contains($order)) {
+            $this->orders->removeElement($order);
+            // set the owning side to null (unless already changed)
+            if ($order->getProject() === $this) {
+                $order->setProject(null);
+            }
+        }
 
         return $this;
     }
