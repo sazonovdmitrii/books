@@ -3,8 +3,10 @@
 namespace App\Lp\PaymentBundle\Controller;
 
 use App\Entity\Transaction;
+use App\Mailer\Mailer;
 use App\Repository\OrdersRepository;
 use App\Repository\TransactionRepository;
+use App\Service\BookService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -57,7 +59,10 @@ class YandexController extends AbstractController
 
     public function transaction(
         EntityManagerInterface $entityManager,
-        TransactionRepository $transactionRepository
+        TransactionRepository $transactionRepository,
+        OrdersRepository $ordersRepository,
+        BookService $bookService,
+        Mailer $mailer
     ) {
         $source = file_get_contents('php://input');
         $transactionData = json_decode($source);
@@ -82,6 +87,14 @@ class YandexController extends AbstractController
 
                 $entityManager->persist($transaction);
                 $entityManager->flush();
+            }
+            if($transaction->getStatus() == 'succeeded') {
+                $order = $ordersRepository->findOneBy(
+                    ['transaction_id' => $transaction->getId()]
+                );
+                if($order && $order->getId()) {
+                    $mailer->sendDownloadingLink($order->getUser(), $order->getProject(), $bookService);
+                }
             }
         }
 

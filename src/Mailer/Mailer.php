@@ -2,8 +2,10 @@
 
 namespace App\Mailer;
 
+use App\Entity\Project;
 use App\Entity\Users;
 use App\Repository\UsersRepository;
+use App\Service\BookService;
 
 class Mailer
 {
@@ -37,10 +39,15 @@ class Mailer
         $this->mailFrom = $mailFrom;
     }
 
-    public function sendDownloadingLink(Users $user)
-    {
+    public function sendDownloadingLink(
+        Users $user,
+        Project $project,
+        BookService $bookService
+    ) {
         $body = $this->twig->render('emails/downloading_link.html.twig', [
-            'link' => 'asdlkfjasd;lkfj;'
+            'link' => $bookService->generateLink($project, $user),
+            'project' => $project,
+            'user' => $user
         ]);
 
         $message = (new \Swift_Message())

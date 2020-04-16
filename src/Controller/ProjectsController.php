@@ -62,7 +62,7 @@ class ProjectsController extends AbstractController
 
             $user = $usersRepository->findOneBy(['email' => $request->get('email')]);
 
-            if(!$user) {
+            if(!$user && !$user->getId()) {
                 $user = new Users();
                 $user->setEmail($request->get('email'));
                 $user->setPassword('email');
