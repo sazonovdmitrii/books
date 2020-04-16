@@ -10,6 +10,8 @@ use App\Service\BookService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use App\Repository\UsersRepository;
+use App\Repository\ProjectRepository;
 
 /**
  * Class YandexController
@@ -36,9 +38,13 @@ class YandexController extends AbstractController
      */
     public function __construct(
         EntityManagerInterface $entityManager,
-        TransactionRepository $transactionRepository
+        TransactionRepository $transactionRepository,
+        UsersRepository $usersRepository,
+        ProjectRepository $projectRepository
     ) {
         $this->entityManager = $entityManager;
+        $this->usersRepository = $usersRepository;
+        $this->projectRepository = $projectRepository;
         $this->transactionRepository = $transactionRepository;
     }
 
@@ -70,6 +76,7 @@ class YandexController extends AbstractController
             $transaction = $transactionRepository
                 ->findOneBy(['external_id' => $transactionData->object->id]);
             if($transaction && $transaction->getId()) {
+                $transaction->setData($source);
                 $transaction->setType('yandex');
                 $transaction->setEvent($transactionData->event);
                 $transaction->setExternalId($transactionData->object->id);
@@ -90,10 +97,10 @@ class YandexController extends AbstractController
             }
             if($transaction->getStatus() == 'succeeded') {
                 $order = $ordersRepository->findOneBy(
-                    ['transaction_id' => $transaction->getId()]
+                    ['transaction' => $transaction->getId()]
                 );
                 if($order && $order->getId()) {
-                    $mailer->sendDownloadingLink($order->getUser(), $order->getProject(), $bookService);
+                    $mailer->sendDownloadingLink($order->getUser(), $order->getProject(), $bookService, $order->getId() . '-' . $transaction->getId());
                 }
             }
         }
