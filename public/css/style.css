@@ -3994,3 +3994,26 @@ ul.footer-dropdown-menu {
 .mb-20 {
     margin-bottom: 20px;
 }
+
+.modal-window {
+    border-radius: 10px;
+}
+
+.email-input {
+    height: 50px;
+    width: 100%;
+    line-height: 50px;
+    font-size: 20px;
+    border-radius: 5px;
+    margin-bottom: 30px;
+}
+
+.modal-window-button {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    background: #00c0ff;
+    border-radius: 5px;
+    color: #fff;
+}
