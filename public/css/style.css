@@ -4017,3 +4017,19 @@ ul.footer-dropdown-menu {
     border-radius: 5px;
     color: #fff;
 }
+
+.thank-you-page-text-block {
+    padding: 30px;
+    width: 70%;
+    text-align: justify;
+    font-size: 25px;
+}
+
+.thank-you-page-text-block a {
+    color: #337ab7;
+}
+
+.thank-you-page-image {
+    width: 20%;
+    float: right;
+}

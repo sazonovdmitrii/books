@@ -1,7 +1,23 @@
 {% extends "index.html.twig" %}
 
 {% block body %}
-    {{ dump(order) }}
-    {{ dump(order.user) }}
-    {{ dump(order.transaction) }}
+    <section>
+        <div class="container">
+            <div class="row">
+                <img src="{{ order.project.main_image }}" class="thank-you-page-image">
+                <h2 class="title text-center">
+                    Благодарим за покупку!
+                </h2>
+                <div class="thank-you-page-text-block">
+                    <p>
+                        Книга будет отправлена Вам на указанный электронный адресс в ближайшее время, как только поступит оплата.
+                    </p>
+                    <p>
+                        Если возникли проблемы с приобретением книг или иные вопросы, пишите нам по адресу: 
+                        <a href="mailto:daaf_info@com">daaf_info@com</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 {% endblock %}
