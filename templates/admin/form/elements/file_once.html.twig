@@ -30,6 +30,9 @@
             dataType: 'json',
             done: function (e, data) {
                 var src = data.result.file;
+                if(!src) {
+                    src = data.result.files;
+                }
                 $('#{{ type|lower }}_{{ name }}').val(src);
                 $('#upload_process').html('');
                 $('#file_{{ name }}').html('');
