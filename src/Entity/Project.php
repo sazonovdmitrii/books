@@ -60,6 +60,16 @@ class Project
      */
     private $orders;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $short_book_en;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $short_book_ru;
+
     public function __construct()
     {
         $this->bookHashes = new ArrayCollection();
@@ -203,6 +213,30 @@ class Project
                 $order->setProject(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getShortBookEn(): ?string
+    {
+        return $this->short_book_en;
+    }
+
+    public function setShortBookEn(?string $short_book_en): self
+    {
+        $this->short_book_en = $short_book_en;
+
+        return $this;
+    }
+
+    public function getShortBookRu(): ?string
+    {
+        return $this->short_book_ru;
+    }
+
+    public function setShortBookRu(string $short_book_ru): self
+    {
+        $this->short_book_ru = $short_book_ru;
 
         return $this;
     }

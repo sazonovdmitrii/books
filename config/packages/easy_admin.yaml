@@ -66,6 +66,10 @@ easy_admin:
                     - { property: middle_image, label: 'Среднее изображение', type_options: { block_name: 'image' }}
                     - { type: 'tab' , label: 'Книга' }
                     - { property: link, label: 'Файл', type_options: { block_name: 'file'}}
+                    - { type: 'tab' , label: 'Краткая содержание (EN)' }
+                    - { property: short_book_en, label: 'Файл', type_options: { block_name: 'file'}}
+                    - { type: 'tab' , label: 'Краткое содержание (RU)' }
+                    - { property: short_book_ru, label: 'Файл', type_options: { block_name: 'file'}}
                     - { type: 'tab' , label: 'Адреса' }
                     - { property: url, label: 'Адрес проекта' }
         Transaction:
