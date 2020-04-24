@@ -15,13 +15,13 @@
                                 {% endif %}
                             </div>
                             <div class="post-content">
-                                <h4 class="title">Цена: {{ project.price }} ₽</h4>
+                                <h4 class="title">{{ 'Цена'|trans }}: {{ project.price }} ₽</h4>
                                <div>
                                    <div style="display: none;" id="hidden-content-{{ project.id }}" class="modal-window">
-                                       <h2>Введите Ваш Email:</h2>
+                                       <h2>{{ 'Введите Ваш Email'|trans }}:</h2>
                                        <input type="email" id="email{{ project.id }}" class="email-input"/><br/>
                                        <button onclick="processPayment({{ project.id }})" class="modal-window-button">
-                                            Оплатить
+                                            {{ 'Оплатить'|trans }}
                                         </button>
                                    </div>
                                     <a href="{{ project.getShortBookRu() }}" class="btn btn-lg btn-block btn-primary mb-20">
