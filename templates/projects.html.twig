@@ -15,21 +15,24 @@
                                 {% endif %}
                             </div>
                             <div class="post-content">
-                                <h4 class="title">{{ 'Цена'|trans }}: {{ project.price }} ₽</h4>
-                               <div>
-                                   <div style="display: none;" id="hidden-content-{{ project.id }}" class="modal-window">
-                                       <h2>{{ 'Введите Ваш Email'|trans }}:</h2>
-                                       <input type="email" id="email{{ project.id }}" class="email-input"/><br/>
-                                       <button onclick="processPayment({{ project.id }})" class="modal-window-button">
+                                {% if app.request.locale != 'en' %}
+                                    <h4 class="title">{{ project.price }} ₽</h4>
+                                {% endif %}
+                                <div>
+                                    <div style="display: none;" id="hidden-content-{{ project.id }}" class="modal-window">
+                                        <h2>{{ 'Введите Ваш Email'|trans }}:</h2>
+                                        <input type="email" id="email{{ project.id }}" class="email-input"/><br/>
+                                        <button onclick="processPayment({{ project.id }})" class="modal-window-button">
                                             {{ 'Оплатить'|trans }}
                                         </button>
-                                   </div>
-                                    <a href="{{ project.getShortBookRu() }}" class="btn btn-lg btn-block btn-primary mb-20">
+                                    </div>
+                                    <a href="{{ attribute(project, 'getShortBook' ~ app.request.locale) }}" class="btn btn-lg btn-block btn-primary mb-20">
                                         {{ 'Читать содержание и введение'|trans }}
                                     </a>
-                                    <a data-fancybox data-src="#hidden-content-{{ project.id }}" href="javascript:;" class="btn btn-lg btn-block btn-primary mb-20">
+                                    {% if app.request.locale != 'en' %}
+                                        <a data-fancybox data-src="#hidden-content-{{ project.id }}" href="javascript:;" class="btn btn-lg btn-block btn-primary mb-20">
                                         {{ 'Получить полный текст и поддержать проект'|trans }}
-                                    </a>
+                                    </a>{% endif %}
                                </div>
                             </div>
                         </div>
