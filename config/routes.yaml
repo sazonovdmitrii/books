@@ -3,6 +3,10 @@ easy_admin_bundle:
   prefix: /admin
   type: annotation
 
+Projects:
+  resource: App\Controller\ProjectsController
+  type: annotation
+
 urls:
   path:     /{slug}
   controller: App\Controller\CmsController::page
