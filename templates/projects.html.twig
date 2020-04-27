@@ -24,7 +24,7 @@
                                             {{ 'Оплатить'|trans }}
                                         </button>
                                     </div>
-                                    <a href="{{ project.getShortBookRu() }}" class="btn btn-lg btn-block btn-primary mb-20">
+                                    <a href="{{ attribute(project, 'getShortBook' ~ app.request.locale) }}" class="btn btn-lg btn-block btn-primary mb-20">
                                         {{ 'Читать содержание и введение'|trans }}
                                     </a>
                                     <a data-fancybox data-src="#hidden-content-{{ project.id }}" href="javascript:;" class="btn btn-lg btn-block btn-primary mb-20">
