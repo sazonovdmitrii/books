@@ -665,6 +665,7 @@ form.line-form.five-fields button {
     font-size: inherit;
     font-size: 20px;
     border-radius: 5px;
+    white-space: normal;
 }
 
 .btn-primary {
