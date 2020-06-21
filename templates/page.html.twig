@@ -1,4 +1,6 @@
 {% extends "index.html.twig" %}
+{% block title %}{{ parent() }} | {{ page.title }}{% endblock %}
+{% block description %}{{ parent() }} | {{ page.title }}{% endblock %}
 
 {% block body %}
     <section id="text-1col">

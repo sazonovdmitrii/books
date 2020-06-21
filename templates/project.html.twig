@@ -1,5 +1,8 @@
 {% extends "index.html.twig" %}
 
+{% block title %}{{ parent() }} | {{ project.title }}{% endblock %}
+{% block description %}{{ parent() }} | {{ page.title }}{% endblock %}
+
 {% block body %}
     <section id="content-right-app" class="bg-color3">
         <div class="container">

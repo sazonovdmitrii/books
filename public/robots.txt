@@ -1,0 +1,8 @@
+User-agent: Yandex
+Disallow: /admin
+Disallow: /?*
+Disallow: /js
+Disallow: /uploads
+
+Host: http://daaf2020.com/
+Sitemap: http://daaf2020.com/sitemap_https.xml
