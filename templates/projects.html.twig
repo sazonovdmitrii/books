@@ -1,12 +1,12 @@
 {% extends "index.html.twig" %}
 
-{% block title %}{{ parent() }} | {{ 'Книги'|trans }}{% endblock %}
-{% block description %}{{ parent() }} | {{ 'Книги'|trans }}{% endblock %}
+{% block title %}{{ parent() }} | {{ 'Книги и статьи'|trans }}{% endblock %}
+{% block description %}{{ parent() }} | {{ 'Книги и статьи'|trans }}{% endblock %}
 
 {% block body %}
     <section id="blog-3col">
         <div class="container">
-            <h2 class="title text-center">{{ 'Книги'|trans }}</h2>
+            <h2 class="title text-center">{{ 'Книги и статьи'|trans }}</h2>
 
             <div class="row flex-wrap">
                 {% for project in projects_books %}
@@ -18,24 +18,11 @@
                                 {% endif %}
                             </div>
                             <div class="post-content">
-                                {% if app.request.locale != 'en' %}
-                                    <h4 class="title">{{ project.price }} ₽</h4>
-                                {% endif %}
+                                <h4 class="title">{{ project.getShortBookRu() }}</h4>
                                 <div>
-                                    <div style="display: none;" id="hidden-content-{{ project.id }}" class="modal-window">
-                                        <h2>{{ 'Введите Ваш Email'|trans }}:</h2>
-                                        <input type="email" id="email{{ project.id }}" class="email-input"/><br/>
-                                        <button onclick="processPayment({{ project.id }})" class="modal-window-button">
-                                            {{ 'Оплатить'|trans }}
-                                        </button>
-                                    </div>
                                     <a href="{{ attribute(project, 'getShortBook' ~ app.request.locale) }}" class="btn btn-lg btn-block btn-primary mb-20">
-                                        {{ 'Читать содержание и введение'|trans }}
+                                        {{ 'Скачать'|trans }}
                                     </a>
-                                    {% if app.request.locale != 'en' %}
-                                        <a data-fancybox data-src="#hidden-content-{{ project.id }}" href="javascript:;" class="btn btn-lg btn-block btn-primary mb-20">
-                                        {{ 'Получить полный текст и поддержать проект'|trans }}
-                                    </a>{% endif %}
                                </div>
                             </div>
                         </div>
