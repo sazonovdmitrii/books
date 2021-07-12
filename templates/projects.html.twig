@@ -12,13 +12,13 @@
                 {% for project in projects_books %}
                     <div class="col-12 col-md-6">
                         <div class="post">
-                            <div class="post-content">
-                                {% if app.request.locale != 'en' %}
+                            {% if app.request.locale != 'en' %}
+                                <div class="post-content">
                                     {% if  project.getMainImage() %}
                                         <img src="{{ project.getMainImage() }}" class="w-100">
                                     {% endif %}
-                                {% endif %}
-                            </div>
+                                </div>
+                            {% endif %}
                             <div class="post-content">
                                 <h4 class="title">{{ project.getShortDescription()|raw }}</h4>
                                 <div>
