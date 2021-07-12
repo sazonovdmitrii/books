@@ -18,7 +18,7 @@
                                 {% endif %}
                             </div>
                             <div class="post-content">
-                                <h4 class="title">{{ project.getShortBookRu() }}</h4>
+                                <h4 class="title">{{ project.getShortDescription() }}</h4>
                                 <div>
                                     <a href="{{ attribute(project, 'getShortBook' ~ app.request.locale) }}" class="btn btn-lg btn-block btn-primary mb-20">
                                         {{ 'Скачать'|trans }}
