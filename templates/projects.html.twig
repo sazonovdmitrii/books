@@ -13,8 +13,10 @@
                     <div class="col-12 col-md-6">
                         <div class="post">
                             <div class="post-content">
-                                {% if  project.getMainImage() %}
-                                    <img src="{{ project.getMainImage() }}" class="w-100">
+                                {% if app.request.locale != 'en' %}
+                                    {% if  project.getMainImage() %}
+                                        <img src="{{ project.getMainImage() }}" class="w-100">
+                                    {% endif %}
                                 {% endif %}
                             </div>
                             <div class="post-content">
