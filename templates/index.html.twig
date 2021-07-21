@@ -54,12 +54,10 @@
 				<ul class="nav">
 					<li><a href="/">{{ 'Главная'|trans }}</a></li>
 					<li><a href="/about-us">{{ 'О нас'|trans }}</a></li>
-					<li><a href="/goals-and-tasks/">{{ 'Объединим усилия для нового образования'|trans }}</a></li>
 					<li><a href="/contacts">{{ 'Контакты'|trans }}</a></li>
-
-					{% for project_m in projects.getProjects() %}
-						<li><a href="{{ path( 'project', {slug: project_m.url}) }}">{{ project_m.getShortTitle() }}</a></li>
-					{% endfor %}
+					<li><a href="/design-object/">{{ 'Объект проектирования'|trans }}</a></li>
+					<li><a href="/basic-technology/">{{ 'Базовая технология'|trans }}</a></li>
+					<li><a href="/understanding-competencies/">{{ 'Понимание компетенций'|trans }}</a></li>
 				</ul>
 			</div>
 		</div>
