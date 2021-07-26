@@ -4034,3 +4034,11 @@ ul.footer-dropdown-menu {
     width: 20%;
     float: right;
 }
+
+.page-title {
+    font-size: 48px;
+}
+
+.page-title p {
+    margin: 0 0 5px;
+}
