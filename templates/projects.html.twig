@@ -22,9 +22,15 @@
                             <div class="post-content">
                                 <h4 class="title">{{ project.getShortDescription()|raw }}</h4>
                                 <div>
-                                    <a href="{{ project.getLink() }}" class="btn btn-lg btn-block btn-primary mb-20">
-                                        {{ 'Скачать'|trans }}
-                                    </a>
+                                    {% if app.request.locale == 'ru' %}
+                                        <a href="{{ project.getLink() }}" class="btn btn-lg btn-block btn-primary mb-20">
+                                            {{ 'Скачать'|trans }}
+                                        </a>
+                                    {% else %}
+                                        <a href="{{ '/en' ~ project.getLink() }}" class="btn btn-lg btn-block btn-primary mb-20">
+                                            {{ 'Скачать'|trans }}
+                                        </a>
+                                    {% endif %}
                                </div>
                             </div>
                         </div>
