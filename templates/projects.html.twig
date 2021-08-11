@@ -23,11 +23,17 @@
                                 <h4 class="title">{{ project.getShortDescription()|raw }}</h4>
                                 <div>
                                     {% if app.request.locale == 'ru' %}
-                                        <a href="{{ project.getLink() }}" class="btn btn-lg btn-block btn-primary mb-20">
+                                        <a
+                                        href="{{ project.getLink() }}"
+                                        class="btn btn-lg btn-block btn-primary mb-20"
+                                        id="ru_{{ project.getId() }}">
                                             {{ 'Скачать'|trans }}
                                         </a>
                                     {% else %}
-                                        <a href="{{ '/en' ~ project.getLink() }}" class="btn btn-lg btn-block btn-primary mb-20">
+                                        <a
+                                        href="{{ '/en' ~ project.getLink() }}"
+                                        class="btn btn-lg btn-block btn-primary mb-20"
+                                        id="en_{{ project.getId() }}">
                                             {{ 'Скачать'|trans }}
                                         </a>
                                     {% endif %}
